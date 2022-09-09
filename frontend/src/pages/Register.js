@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
+import toast from 'react-hot-toast'
 
 const inputStyle = 'border-2 border-blue-500 py-2 px-3 rounded-sm w-full'
 
@@ -9,11 +10,26 @@ function Register() {
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
 
-  const register = () => {
-    const newUser = {
-      userName, password, email, confirmPassword
+  const register = async() => {
+    
+    if (password === confirmPassword) {
+
+      const newUser = {
+        userName, 
+        password, 
+        email, 
+        confirmPassword
+      }
+      try {
+        
+      } catch (error) {
+        
+      }
+
+    } else {
+      toast.error("Passwords not matching.")
     }
-    console.log(newUser)
+    
   }
   return (
     <div className='flex justify-center items-center h-screen'>
@@ -22,8 +38,8 @@ function Register() {
         <h1 className='font-semibold text-3xl text-gray-700'>Welcome to MERN AUTH APP</h1>
         <input type='text' placeholder='email' className={inputStyle} onChange={e => setEmail(e.target.value)} value={email} />
         <input type='text' placeholder='username' className={inputStyle} onChange={e => setUserName(e.target.value)} value={userName} />
-        <input type='text' placeholder='password' className={inputStyle} onChange={e => setPassword(e.target.value)} value={password} />
-        <input type='text' placeholder='confirm password' className={inputStyle} onChange={e => setConfirmPassword(e.target.value)} value={confirmPassword} />
+        <input type='password' placeholder='password' className={inputStyle} onChange={e => setPassword(e.target.value)} value={password} />
+        <input type='password' placeholder='confirm password' className={inputStyle} onChange={e => setConfirmPassword(e.target.value)} value={confirmPassword} />
 
         <div className='flex justify-between items-end'>
           <Link className="underline" to='/login'>Click Here To Login</Link>
