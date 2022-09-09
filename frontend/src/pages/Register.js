@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import toast from 'react-hot-toast'
+import axios from 'axios'
 
 const inputStyle = 'border-2 border-blue-500 py-2 px-3 rounded-sm w-full'
 
@@ -10,26 +11,32 @@ function Register() {
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
 
-  const register = async() => {
-    
+  const register = async () => {
+
     if (password === confirmPassword) {
 
       const newUser = {
-        userName, 
-        password, 
-        email, 
+        userName,
+        password,
+        email,
         confirmPassword
       }
       try {
-        
+        const response = await axios.post('/api/auth/register', newUser)
+        if (response.data.success) {
+          toast.success(response.data.message)
+        } else {
+          toast.error(response.data.message)
+        }
+
       } catch (error) {
-        
+
       }
 
     } else {
       toast.error("Passwords not matching.")
     }
-    
+
   }
   return (
     <div className='flex justify-center items-center h-screen'>
