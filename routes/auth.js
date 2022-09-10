@@ -5,15 +5,17 @@ const User = require("../models/user")
 
 
 
+
 router.post("/register", async (req, res) => {
 
   try {
     const newUser = new User(req.body)
-    await newUser.save()
+    const save = await newUser.save()
     res.status(200).send({
       success: true,
-      message: "User Registered successfully"
+      message: `User Registered successfully ${save}`
     })
+    console.log(save)
   } catch (error) {
     res.status(400).send(error)
   }
