@@ -19,7 +19,7 @@ function Login() {
       toast.dismiss()
       if (response.data.success) {
         toast.success(response.data.message)
-        localStorage.setItem("user", JSON.stringify(response.data.data))
+        localStorage.setItem("user", response.data.data)
         navigate("/")
       } else {
         toast.error(response.data.message)

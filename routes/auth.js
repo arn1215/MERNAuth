@@ -75,4 +75,7 @@ router.post("/login", async (req, res) => {
 
 })
 
+router.post("/logout", (req, res) => {
+  localStorage.setItem("user", "")
+})
 module.exports = router
