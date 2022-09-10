@@ -13,13 +13,18 @@ function Login() {
       password, email, 
     }
    try {
+    toast.loading("Loading...")
     const response = await axios.post("/api/auth/login", user)
+    toast.dismiss()
     if(response.data.success) {
       toast.success(response.data.message)
     } else {
       toast.error(response.data.message)
     }
-   } catch (error) {}
+   } catch (error) {
+    toast.dismiss();
+    toast.error(`Something Went Wrong`)
+   }
   }
   return (
     <div className='flex justify-center items-center h-screen'>

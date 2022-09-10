@@ -22,7 +22,9 @@ function Register() {
         confirmPassword
       }
       try {
+        toast.loading("Loading...")
         const response = await axios.post('/api/auth/register', newUser)
+        toast.dismiss()
         if (response.data.success) {
           toast.success(response.data.message)
         } else {
@@ -30,6 +32,7 @@ function Register() {
         }
 
       } catch (error) {
+        toast.error("Something went wrong...")
 
       }
 
