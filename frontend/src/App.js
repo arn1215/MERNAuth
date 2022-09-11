@@ -1,37 +1,43 @@
 
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import jwt_decode from 'jwt-decode';
+
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux'
+
+import Logout from './components/Logout';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import { Toaster } from 'react-hot-toast'
-import Logout from './components/Logout';
-import { useEffect } from 'react';
-import { Provider, useDispatch } from 'react-redux'
-
-
-import { store } from './Store'
 import { getToken } from './Store/session';
-import jwt_decode from 'jwt-decode';
+import Nav from './components/Nav';
+import Sidebar from './components/Sidebar';
+
 
 function App() {
   const dispatch = useDispatch()
-  const user  = localStorage.getItem("user")
+  const token = localStorage.getItem("user")
+  const session = useSelector(state => state.session)
+  const user = session.user
+
   useEffect(() => {
-    if (user) {
+    if (token) {
       dispatch(getToken(jwt_decode(localStorage.getItem("user"))))
     }
   }, [localStorage])
 
   return (
-        <BrowserRouter>
-          <Toaster position='top-center' reverseOrder={false} />
-          <Logout />
-          <Routes>
-            <Route path="/" element={<ProtectedRoutes><Home /></ProtectedRoutes>} />
-            <Route path="login" element={<PublicRoutes><Login /></PublicRoutes>} />
-            <Route path="register" element={<PublicRoutes><Register /></PublicRoutes>} />
-          </Routes>
-        </BrowserRouter>
+    <BrowserRouter>
+      <Nav />
+      <Sidebar />
+
+      {user ? <Logout /> : null}
+      <Routes>
+        <Route path="/" element={<ProtectedRoutes><Home /></ProtectedRoutes>} />
+        <Route path="login" element={<PublicRoutes><Login /></PublicRoutes>} />
+        <Route path="register" element={<PublicRoutes><Register /></PublicRoutes>} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

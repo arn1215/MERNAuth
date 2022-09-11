@@ -5,6 +5,7 @@ import axios from 'axios'
 import {useDispatch} from 'react-redux'
 import { getToken } from '../Store/session'
 import jwt_decode from "jwt-decode";
+import Sidebar from '../components/Sidebar'
 
 const inputStyle = 'border-2 border-blue-500 py-2 px-3 rounded-sm w-full'
 
@@ -36,6 +37,7 @@ function Login() {
   }
   return (
     <div className='flex justify-center items-center h-screen'>
+
 
       <div className='w-[500px] space-y-5 flex-col p-5 shadow-lg border border-gray-300'>
         <h1 className='font-semibold text-3xl text-gray-700'>Welcome Back</h1>
