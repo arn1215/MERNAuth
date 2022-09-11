@@ -6,19 +6,23 @@ import Register from './pages/Register';
 import { Toaster } from 'react-hot-toast'
 import Logout from './components/Logout';
 import { useEffect } from 'react';
-import { Provider } from 'react-redux'
+import { Provider, useDispatch } from 'react-redux'
 
 
 import { store } from './Store'
+import { getToken } from './Store/session';
+import jwt_decode from 'jwt-decode';
 
 function App() {
-
+  const dispatch = useDispatch()
+  const user  = localStorage.getItem("user")
   useEffect(() => {
-
-  }, [])
+    if (user) {
+      dispatch(getToken(jwt_decode(localStorage.getItem("user"))))
+    }
+  }, [localStorage])
 
   return (
-    <Provider store={store}>
         <BrowserRouter>
           <Toaster position='top-center' reverseOrder={false} />
           <Logout />
@@ -28,7 +32,6 @@ function App() {
             <Route path="register" element={<PublicRoutes><Register /></PublicRoutes>} />
           </Routes>
         </BrowserRouter>
-    </Provider>
   );
 }
 

@@ -1,7 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit'
-import  bidsReducer  from './bids'
+import  bidsSlice  from './bids'
+import sessionSlice from './session'
 export const store = configureStore({
   reducer: {
-    bids: bidsReducer
+    bids: bidsSlice,
+    session: sessionSlice,
   },
 })

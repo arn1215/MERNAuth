@@ -2,13 +2,17 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import toast from 'react-hot-toast'
 import axios from 'axios'
+import {useDispatch} from 'react-redux'
+import { getToken } from '../Store/session'
+import jwt_decode from "jwt-decode";
+
 const inputStyle = 'border-2 border-blue-500 py-2 px-3 rounded-sm w-full'
 
 function Login() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const navigate = useNavigate()
-
+  const dispatch = useDispatch()
   const login = async () => {
     const user = {
       password, email,
@@ -20,6 +24,7 @@ function Login() {
       if (response.data.success) {
         toast.success(response.data.message)
         localStorage.setItem("user", response.data.data)
+        dispatch(getToken(jwt_decode(response.data.data)))
         navigate("/")
       } else {
         toast.error(response.data.message)
