@@ -4,10 +4,11 @@ const express = require("express")
 const Event = require("../models/event")
 
 
+
 const router = express.Router()
 
 
-router.get("/", async(req, res) => {
+router.get("/", async (req, res) => {
   try {
     const events = await Event.find({})
     res.send(events)
@@ -17,7 +18,7 @@ router.get("/", async(req, res) => {
 
 })
 
-router.post("/", async(req, res) => {  
+router.post("/", async (req, res) => {
   try {
     const eventExists = await Event.findOne(req.body)
     let response;
@@ -25,7 +26,7 @@ router.post("/", async(req, res) => {
       response = "This Event Already Exists...."
     } else {
       const event = new Event(req.body)
-      const save = await event.save()    
+      const save = await event.save()
       response = event
     }
     res.send(response)
@@ -34,11 +35,11 @@ router.post("/", async(req, res) => {
   }
 })
 
-router.put("/:id", async(req, res) => {
-  const {id} = req.params
+router.put("/:id", async (req, res) => {
+  const { id } = req.params
   try {
-    const eventToUpdate = await Event.findOneAndUpdate({_id: id}, req.body)
-    
+    const eventToUpdate = await Event.findOneAndUpdate({ _id: id }, req.body)
+
     res.send(eventToUpdate)
   } catch (error) {
     res.send(error.message)
@@ -47,7 +48,16 @@ router.put("/:id", async(req, res) => {
 
 
 
+router.delete("/:id", async (req, res) => {
+  const { id } = req.params
+  try {
+    const deletedEvent = await Event.findOneAndDelete({_id: id})
+    res.send(deletedEvent)
+  } catch (error) {
+    res.send(error.message)
+  }
 
+})
 
 
 
