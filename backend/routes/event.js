@@ -1,5 +1,6 @@
 const { Router } = require("express")
 const express = require("express")
+const seedData = require("./seed")
 
 const Event = require("../models/event")
 
@@ -17,6 +18,18 @@ router.get("/", async (req, res) => {
   }
 
 })
+
+
+/* router.get("/seed", async (req, res) => {
+  try {
+    const events = await Event.insertMany([])
+    res.send(events)
+  } catch (error) {
+    res.send(error.message)
+  }
+
+}) */
+
 
 router.post("/", async (req, res) => {
   try {
