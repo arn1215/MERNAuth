@@ -12,6 +12,7 @@ import Register from './pages/Register';
 import { getToken } from './Store/session';
 import Nav from './components/Nav';
 import Sidebar from './components/Sidebar';
+import { Toaster } from 'react-hot-toast';
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
     <BrowserRouter>
       <Nav />
       <Sidebar />
+      <Toaster position='center' />
 
       {user ? <Logout /> : null}
       <Routes>
