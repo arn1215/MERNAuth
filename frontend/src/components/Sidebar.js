@@ -1,12 +1,13 @@
-import React from 'react'
+import image from "./Ticketr-logos_white.png"
+
 
 function Sidebar() {
   return (
     
-      <div class="flex flex-col justify-between w-16 h-screen bg-gray-300 border-r absolute">
+      <div class="flex flex-col justify-between w-16 h-screen bg-gray-300 border-r fixed">
         <div>
           <div class="inline-flex items-center justify-center w-16 h-16">
-            <span class="block w-10 h-10 bg-gray-200 rounded-lg"></span>
+            <img class="block w-10 h-10 bg-gray-200 rounded-lg" src={image}></img>
           </div>
 
           <div class="border-t border-gray-100">

@@ -35,9 +35,9 @@ function App() {
 
       {user ? <Logout /> : null}
       <Routes>
-        <Route path="/" element={<ProtectedRoutes><Home /></ProtectedRoutes>} />
-        <Route path="login" element={<PublicRoutes><Login /></PublicRoutes>} />
-        <Route path="register" element={<PublicRoutes><Register /></PublicRoutes>} />
+        <Route path="/" element={<Home />} />
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
       </Routes>
     </BrowserRouter>
   );

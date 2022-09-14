@@ -3,3 +3,7 @@
 @tailwind utilities;
 
 
+body {
+  overflow: scroll;
+  overflow-x: hidden;
+}
