@@ -11,7 +11,7 @@ function Nav() {
         >
           <img src={image}  alt="logo" style={{height: '50px'}}/>
           <input 
-          className='w-96'
+          className='w-96 h-8 rounded'
           />
           <NavLinks />
         </div>

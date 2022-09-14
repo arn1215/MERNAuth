@@ -26,12 +26,12 @@ function NavLinks() {
             >
               Log in
             </button>
-            <button
+{/*          todo   <button
               class="px-5 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg"
               onClick={() => navigate("/register")}
             >
               Sign up
-            </button>
+            </button> */}
           </div>
         </> 
         
