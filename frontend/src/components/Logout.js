@@ -10,7 +10,7 @@ function Logout() {
   const logout = () => {
     localStorage.removeItem('user')
     dispatch(getToken(null))
-    let thing = JSON.parse(localStorage.getItem("user"))
+    let token = JSON.parse(localStorage.getItem("user"))
     
     navigate("/login")
   }

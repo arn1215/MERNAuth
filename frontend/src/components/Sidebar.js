@@ -1,7 +1,22 @@
+import { useDispatch } from "react-redux"
+import { useNavigate } from "react-router-dom"
+import { getToken } from "../Store/session"
 import image from "./Ticketr-logos_white.png"
 
 
 function Sidebar() {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const logout = () => {
+    localStorage.removeItem('user')
+    dispatch(getToken(null))
+    let token = JSON.parse(localStorage.getItem("user"))
+    
+    navigate("/login")
+  }
+
+
   return (
     
       <div class="flex flex-col justify-between w-16 h-screen bg-gray-300 border-r fixed">
@@ -163,8 +178,8 @@ function Sidebar() {
         </div>
 
         <div class="sticky inset-x-0 bottom-0 p-2 bg-white border-t border-gray-100">
-          <form action="/logout">
             <button
+              onClick={logout}
               type="submit"
               class="flex justify-center w-full px-2 py-1.5 text-sm text-gray-500 rounded-lg hover:bg-gray-50 hover:text-gray-700 group relative"
             >
@@ -189,7 +204,7 @@ function Sidebar() {
                 Logout
               </span>
             </button>
-          </form>
+
         </div>
       </div>
 
