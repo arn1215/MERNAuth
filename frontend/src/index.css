@@ -34,3 +34,13 @@ body {
     border-radius: 10px;
 
   }
+
+
+  .ticket {
+    background-color: #fca177
+  }
+
+  
+  .ticket:hover {
+    background-color: #ff9868
+  }
