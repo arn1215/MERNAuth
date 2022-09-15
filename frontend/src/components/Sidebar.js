@@ -28,9 +28,9 @@ function Sidebar() {
           <div class="border-t border-gray-100">
             <nav class="flex flex-col p-2">
               <div class="py-4">
-                <a
-                  href=""
-                  class="flex justify-center px-2 py-1.5 t text-blue-700 rounded bg-blue-50 group relative"
+              <button
+                  onClick={() => navigate("/")}
+                  className="flex justify-center px-2 py-1.5 t text-blue-700 rounded bg-blue-50 group relative ml-1"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -55,9 +55,9 @@ function Sidebar() {
                   <span
                     class="absolute text-xs font-medium text-white bg-gray-900 left-full ml-4 px-2 py-1.5 top-1/2 -translate-y-1/2 rounded opacity-0 group-hover:opacity-100"
                   >
-                    General
+                    Home
                   </span>
-                </a>
+                </button>
               </div>
 
               <ul class="pt-4 border-t border-gray-100 space-y-1">

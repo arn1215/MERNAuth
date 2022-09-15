@@ -13,8 +13,10 @@ app.use(cors())
 //ROUTES
 const authRoute = require("./routes/auth")
 const eventRoute = require("./routes/event")
+const ticketRoute = require("./routes/ticket")
 app.use("/api/auth", authRoute)
 app.use("/api/events", eventRoute)
+app.use("/api/tickets", ticketRoute)
 
 
 const mongodbConnection = require('./config/mongoConnection.js')
