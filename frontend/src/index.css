@@ -9,3 +9,28 @@ body {
   overflow-x: hidden;
   font-family: 'Inter', sans-serif;
 }
+
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: #5e7383 #ffffff;
+    
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 16px;
+
+  }
+
+  *::-webkit-scrollbar-track {
+    background-color: #334155 ;
+    border-radius: 7px;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #92adc2;
+    border-radius: 10px;
+
+  }
