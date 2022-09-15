@@ -14,6 +14,7 @@ import Nav from './components/Nav';
 import Sidebar from './components/Sidebar';
 import { Toaster } from 'react-hot-toast';
 import Event from './pages/Event';
+import Cart from './pages/Cart';
 
 
 function App() {
@@ -40,6 +41,8 @@ function App() {
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
         <Route path='events/:id' element={<Event />} />
+        
+        <Route path='/cart' element={<ProtectedRoutes><Cart /></ProtectedRoutes>} />
       </Routes>
     </BrowserRouter>
   );

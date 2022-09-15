@@ -1,5 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import jwt_decode from "jwt-decode";
 
+const storageData = jwt_decode(JSON.stringify(localStorage.getItem("user")));
 
 export const getToken = createAsyncThunk(
   "token/getToken",
@@ -14,7 +16,7 @@ export const getToken = createAsyncThunk(
 export const sessionSlice = createSlice({
   name: "session",
   initialState: {
-    user: null,
+    user: storageData ? storageData : null,
     status: null
   },
 

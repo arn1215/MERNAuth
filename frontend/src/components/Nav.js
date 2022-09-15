@@ -1,8 +1,12 @@
 
+import { useNavigate } from 'react-router-dom'
 import NavLinks from './NavLinks'
 import image from "./Ticketr-logos_white.png"
 
 function Nav() {
+
+  const navigate = useNavigate()
+
   return (
     <>
       <header class=" bg-gray-300">
@@ -13,6 +17,7 @@ function Nav() {
           <input 
           className='w-96 h-8 rounded'
           />
+          <button onClick={() => navigate("/cart")}>cart</button>
           <NavLinks />
         </div>
       </header>

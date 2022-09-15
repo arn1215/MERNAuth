@@ -9,9 +9,10 @@ const ticket = require("../models/ticket")
 const router = express.Router()
 
 
-router.get("/", async (req, res) => {
+router.get("/:userId", async (req, res) => {
+  const {userId} = req.params
   try {
-    const tickets = await ticket.find({}).limit(9)
+    const tickets = await ticket.find({customerId: userId})
     res.send(tickets)
   } catch (error) {
     res.send(error.message)
@@ -19,7 +20,7 @@ router.get("/", async (req, res) => {
 
 })
 
-router.get("/:id", async (req, res) => {
+/* router.get("/:id", async (req, res) => {
   const { id } = req.params
   try {
     const tickets = await ticket.findOne({ _id: id })
@@ -29,7 +30,7 @@ router.get("/:id", async (req, res) => {
   }
 
 })
-
+ */
 /* router.get("/seed", async (req, res) => {
   try {
     const tickets = await ticket.insertMany([])
@@ -43,16 +44,10 @@ router.get("/:id", async (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
-    const ticketExists = await ticket.findOne(req.body)
     let response;
-    if (ticketExists) {
-      response = "This ticket Already Exists...."
-    } else {
       const newTicket = new ticket(req.body)
       const save = await newTicket.save()
-      response = save
-    }
-    res.send(response)
+    res.send(save)
   } catch (error) {
     res.send(error.message)
   }
