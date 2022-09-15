@@ -26,9 +26,10 @@ function Cart() {
             <div className="flex flex-col space-y-8">
               {tickets.map((ticket) => (
                 !ticket.isPaid ? 
-                  <div className="ticket  flex w-[100%] h-28 rounded-sm transition-all justify-around">
-                    <span>{ticket.event.ticketPrice}</span>
+                  <div className="ticket  flex w-[100%] h-28 rounded-sm transition-all items-center justify-around">
+                    <img src={ticket.event.images} className="w-32 h-20 rounded-lg" />
                     <span>{ticket.event.name}</span>
+                    <span>{ticket.event.ticketPrice}</span>
                   </div> : null
               ))}
             </div>
@@ -40,7 +41,11 @@ function Cart() {
             <div className="flex flex-col space-y-8">
               {tickets.map((ticket) => (
                 ticket.isPaid ?
-                  <div className="w-[100%] h-28 bg-slate-200">{ticket.event.ticketPrice}</div> : null
+                <div className="ticket  flex w-[100%] h-28 rounded-sm transition-all items-center justify-around">
+                <img src={ticket.event.images} className="w-32 h-20 rounded-lg" />
+                <span>{ticket.event.name}</span>
+                <span>{ticket.event.ticketPrice}</span>
+              </div> : null
               ))}
             </div>
           </div>
