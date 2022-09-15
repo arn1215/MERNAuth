@@ -11,7 +11,7 @@ const router = express.Router()
 
 router.get("/", async (req, res) => {
   try {
-    const events = await Event.find({})
+    const events = await Event.find({}).limit(9)
     res.send(events)
   } catch (error) {
     res.send(error.message)
@@ -19,6 +19,16 @@ router.get("/", async (req, res) => {
 
 })
 
+router.get("/:id", async (req, res) => {
+  const { id } = req.params
+  try {
+    const events = await Event.findOne({ _id: id })
+    res.send(events)
+  } catch (error) {
+    res.send(error.message)
+  }
+
+})
 
 /* router.get("/seed", async (req, res) => {
   try {
@@ -64,7 +74,7 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   const { id } = req.params
   try {
-    const deletedEvent = await Event.findOneAndDelete({_id: id})
+    const deletedEvent = await Event.findOneAndDelete({ _id: id })
     res.send(deletedEvent)
   } catch (error) {
     res.send(error.message)

@@ -1,9 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
 
 body {
   overflow: scroll;
   overflow-x: hidden;
+  font-family: 'Inter', sans-serif;
 }

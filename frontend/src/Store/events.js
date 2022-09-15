@@ -4,12 +4,15 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const getEvents = createAsyncThunk(
   "events/getEvents",
   async (dispatch, getState) => {
-      const data = await fetch('/api/events')
-      const res = await data.json()
-      return res
-    
+    const data = await fetch('/api/events')
+    const res = await data.json()
+    return res
   }
 )
+
+createAsyncThunk()
+
+
 
 
 export const eventsSlice = createSlice({
@@ -18,17 +21,23 @@ export const eventsSlice = createSlice({
     events: [],
     status: null
   },
-  extraReducers: {
-    [getEvents.pending] : (state, action) => {
-      state.status = 'loading'
-    },
-    [getEvents.fulfilled]: (state, action) => {
-      state.status = 'success'
+  extraReducers: (builder) => {
+
+    builder.addCase(getEvents.pending, (state, action) => {
+      state.status ='loading'
+    })
+
+    builder.addCase(getEvents.fulfilled, (state, action) => {
+      state.status ='success'
       state.events = action.payload
-    },
-    [getEvents.rejected]: (state, action) => {
+    })
+
+    builder.addCase(getEvents.rejected, (state, action) => {
       state.status = 'failed'
-    }
+    })
+
+
+
   }
 })
 
