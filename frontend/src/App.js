@@ -24,7 +24,7 @@ function App() {
   const user = session.user
 
   useEffect(() => {
-    if (token) {
+    if (token && user) {
       dispatch(getToken(jwt_decode(localStorage.getItem("user"))))
     }
   }, [localStorage])
