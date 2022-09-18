@@ -5,6 +5,7 @@ const users = [
   {
     name: 'Admin User',
     email: 'yo@whatsup.com',
+    password: bcrypt.hashSync('password', 10),
     isAdmin: true
   },
   {

@@ -6,13 +6,12 @@ const events = [{
   name: "event name",
   "headliner": "Giraffage",
   "description": "Join Giraffage at The Bowery",
-  "startTime": 10000,
-  "imnew Date(): "https://cdn-resources.ableton.com/resources/filer_thumbnails/b6/9d/b69d3c09-2e50-4627-af71-f0ae9c4f2136/hph_giraffage.jpg__615x341_q85_crop_subsampling-2_upscale.jpg",
+  "startTime": new Date(),
+  "images": "https://i.discogs.com/vGlq9j2dYIH41a8J1LTtfZbR0arlgN_43e3LbQ81SG8/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTE5OTQ0/MTAtMTYxODIyMjA0/MS02MzYwLmpwZWc.jpeg",
   "ticketPrice": 10.01,
   "venueId": 1,
   ticketsInStock: 100,
   category: 'music',
-  creatorId: "631c2ec5619377e24d2c1a50",
   venueId: "631c2ec5619377e24d2c1a80"
 }, {
   name: "event name",
@@ -24,7 +23,6 @@ const events = [{
   "venueId": 1,
   ticketsInStock: 100,
   category: 'music',
-  creatorId: "631c2ec5619377e24d2c1a50",
   venueId: "631c2ec5619377e24d2c1a80"
 }, {
   name: "event name",
@@ -36,7 +34,6 @@ const events = [{
   "venueId": 1,
   ticketsInStock: 100,
   category: 'music',
-  creatorId: "631c2ec5619377e24d2c1a50",
   venueId: "631c2ec5619377e24d2c1a80"
 }, {
   name: "event name",
@@ -48,7 +45,6 @@ const events = [{
   "venueId": 1,
   ticketsInStock: 100,
   category: 'music',
-  creatorId: "631c2ec5619377e24d2c1a50",
   venueId: "631c2ec5619377e24d2c1a80"
 }, {
   name: "event name",
@@ -60,7 +56,6 @@ const events = [{
   "venueId": 1,
   ticketsInStock: 100,
   category: 'music',
-  creatorId: "631c2ec5619377e24d2c1a50",
   venueId: "631c2ec5619377e24d2c1a80"
 }, {
   name: "event name",
@@ -72,7 +67,6 @@ const events = [{
   "venueId": 1,
   ticketsInStock: 100,
   category: 'music',
-  creatorId: "631c2ec5619377e24d2c1a50",
   venueId: "631c2ec5619377e24d2c1a80"
 }, {
   name: "event name",
@@ -84,7 +78,6 @@ const events = [{
   "venueId": 1,
   ticketsInStock: 100,
   category: 'music',
-  creatorId: "631c2ec5619377e24d2c1a50",
   venueId: "631c2ec5619377e24d2c1a80"
 }, {
   name: "event name",
@@ -96,7 +89,6 @@ const events = [{
   "venueId": 1,
   ticketsInStock: 100,
   category: 'music',
-  creatorId: "631c2ec5619377e24d2c1a50",
   venueId: "631c2ec5619377e24d2c1a80"
 }, {
   name: "event name",
@@ -108,7 +100,6 @@ const events = [{
   "venueId": 1,
   ticketsInStock: 100,
   category: 'music',
-  creatorId: "631c2ec5619377e24d2c1a50",
   venueId: "631c2ec5619377e24d2c1a80"
 }, {
   name: "event name",
@@ -120,7 +111,6 @@ const events = [{
   "venueId": 1,
   ticketsInStock: 100,
   category: 'music',
-  creatorId: "631c2ec5619377e24d2c1a50",
   venueId: "631c2ec5619377e24d2c1a80"
 }, {
   name: "event name",
@@ -132,7 +122,6 @@ const events = [{
   "venueId": 1,
   ticketsInStock: 100,
   category: 'music',
-  creatorId: "631c2ec5619377e24d2c1a50",
   venueId: "631c2ec5619377e24d2c1a80"
 }, {
   name: "event name",
@@ -144,7 +133,6 @@ const events = [{
   "venueId": 1,
   ticketsInStock: 100,
   category: 'music',
-  creatorId: "631c2ec5619377e24d2c1a50",
   venueId: "631c2ec5619377e24d2c1a80"
 }, {
   name: "event name",
@@ -156,7 +144,6 @@ const events = [{
   "venueId": 1,
   ticketsInStock: 100,
   category: 'music',
-  creatorId: "631c2ec5619377e24d2c1a50",
   venueId: "631c2ec5619377e24d2c1a80"
 }, {
   name: "event name",
@@ -168,7 +155,6 @@ const events = [{
   "venueId": 1,
   ticketsInStock: 100,
   category: 'music',
-  creatorId: "631c2ec5619377e24d2c1a50",
   venueId: "631c2ec5619377e24d2c1a80"
 }, {
   name: "event name",
@@ -180,7 +166,6 @@ const events = [{
   "venueId": 1,
   ticketsInStock: 100,
   category: 'music',
-  creatorId: "631c2ec5619377e24d2c1a50",
   venueId: "631c2ec5619377e24d2c1a80"
 }, {
   name: "event name",
@@ -192,7 +177,6 @@ const events = [{
   "venueId": 1,
   ticketsInStock: 100,
   category: 'music',
-  creatorId: "631c2ec5619377e24d2c1a50",
   venueId: "631c2ec5619377e24d2c1a80"
 }, {
   name: "event name",
@@ -204,7 +188,6 @@ const events = [{
   "venueId": 1,
   ticketsInStock: 100,
   category: 'music',
-  creatorId: "631c2ec5619377e24d2c1a50",
   venueId: "631c2ec5619377e24d2c1a80"
 }, {
   name: "event name",
@@ -216,7 +199,6 @@ const events = [{
   "venueId": 1,
   ticketsInStock: 100,
   category: 'music',
-  creatorId: "631c2ec5619377e24d2c1a50",
   venueId: "631c2ec5619377e24d2c1a80"
 }, {
   name: "event name",
@@ -228,7 +210,6 @@ const events = [{
   "venueId": 1,
   ticketsInStock: 100,
   category: 'music',
-  creatorId: "631c2ec5619377e24d2c1a50",
   venueId: "631c2ec5619377e24d2c1a80"
 }, {
   name: "event name",
@@ -240,7 +221,6 @@ const events = [{
   "venueId": 1,
   ticketsInStock: 100,
   category: 'music',
-  creatorId: "631c2ec5619377e24d2c1a50",
   venueId: "631c2ec5619377e24d2c1a80"
 }, {
   name: "event name",
@@ -252,7 +232,6 @@ const events = [{
   "venueId": 1,
   ticketsInStock: 100,
   category: 'music',
-  creatorId: "631c2ec5619377e24d2c1a50",
   venueId: "631c2ec5619377e24d2c1a80"
 }]
 
