@@ -38,7 +38,7 @@ const eventSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  owner: {
+  creatorId: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
     ref: 'users'
@@ -46,7 +46,7 @@ const eventSchema = new mongoose.Schema({
   venueId: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
-    ref: "venues"
+    ref: "Venue"
     //todo : remove the hardcoded default
 
   }
@@ -54,6 +54,6 @@ const eventSchema = new mongoose.Schema({
   timestamps: true,
 })
 
-const event = mongoose.model('events', eventSchema)
+const Event = mongoose.model('Event', eventSchema)
 
-module.exports = event
+module.exports = Event

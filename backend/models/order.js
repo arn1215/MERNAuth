@@ -16,7 +16,7 @@ const orderSchema = new mongoose.Schema({
       event: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
-        ref: 'events'
+        ref: 'Event'
       },
     }
   ],
@@ -68,6 +68,6 @@ const orderSchema = new mongoose.Schema({
   timestamps: true,
 })
 
-const order = mongoose.model('orders', eventSchema)
+const Order = mongoose.model('Order', eventSchema)
 
-module.exports = order
+module.exports = Order
