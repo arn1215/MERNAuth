@@ -1,6 +1,6 @@
 const { Router } = require("express")
 const express = require("express")
-const seedData = require("./seed")
+
 
 const ticket = require("../models/ticket")
 

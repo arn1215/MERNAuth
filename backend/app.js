@@ -2,8 +2,9 @@ const express = require('express')
 require('dotenv').config()
 const cors = require('cors')
 const morgan = require('morgan')
+const connectDB = require("./config/mongoConnection")
 
-
+connectDB()
 
 const app = express()
 app.use(morgan('dev'))
