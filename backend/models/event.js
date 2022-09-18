@@ -2,9 +2,12 @@ const mongoose = require('mongoose')
 
 
 const eventSchema = new mongoose.Schema({
-
   name: {
     type: String,
+    required: true
+  },
+  headliner: {
+    type: String, 
     required: true
   },
   description: {
@@ -12,8 +15,9 @@ const eventSchema = new mongoose.Schema({
     required: true
   },
   startTime: {
-    type: Number,
-    required: true
+    type: Date,
+    required: true,
+    default: new Date()
   },
   images: {
     type: String,
@@ -25,12 +29,29 @@ const eventSchema = new mongoose.Schema({
     //todo : remove the hardcoded default
     default: 10.00
   },
-  venueId: {
+  ticketsInStock: {
     type: Number,
     required: true,
+    default: 0
+  },
+  category: {
+    type: String,
+    required: true,
+  },
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'users'
+  },
+  venueId: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: "venues"
     //todo : remove the hardcoded default
-    default: 1
+
   }
+}, {
+  timestamps: true,
 })
 
 const event = mongoose.model('events', eventSchema)
