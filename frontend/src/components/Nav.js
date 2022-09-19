@@ -9,9 +9,9 @@ function Nav() {
 
   return (
     <>
-      <header class=" bg-gray-300">
+      <header className=" bg-gray-300">
         <div
-          class="flex fixed items-center justify-around h-12 px-4 mx-auto w-screen bg-gray-300 shadow-md"
+          className="flex fixed items-center justify-around h-12 px-4 mx-auto w-screen bg-gray-300 shadow-md"
         >
           <img src={image}  alt="logo" style={{height: '50px'}}/>
           <input 

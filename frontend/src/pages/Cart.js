@@ -8,14 +8,18 @@ function Cart() {
   const dispatch = useDispatch()
   const user = useSelector(state => state.session)
   const tickets = useSelector(state => state.tickets.tickets)
-  const storagedata = JSON.parse(localStorage.getItem("data"));
-  const [total, setTotal] = useState(0)
+  const cartItems = useSelector(state => state.cart.cartItems)
   useEffect(() => {
-    console.log(user.user)
+    console.log(user)
     const fetchTickets = async () => {
-      await dispatch(getTickets(user.user._id))
+      console.log(user.user)
+      await dispatch(getTickets(user?.user?._id))
     }
-    fetchTickets()
+    try {
+      fetchTickets()
+    } catch (e) {
+      console.log(e.message)
+    }
   }, [])
   return (
     <>
@@ -24,14 +28,26 @@ function Cart() {
           <div className="bg-slate-700 w-4/6  min-h-full shadow-xl p-10 overflow-scroll rounded-md">
             <h1 className="text-2xl">Check Out</h1>
             <div className="flex flex-col space-y-8">
-              {tickets.map((ticket) => (
-                !ticket.isPaid ? 
+              {cartItems.length === 0 ? <h1>Your cart is empty</h1> : (
+                
+                  cartItems.map((event) => (
+                    true ?
+                      <div className="ticket  flex w-[100%] h-28 rounded-sm transition-all items-center justify-around">
+                        <img src={event.images} className="w-32 h-20 rounded-lg" />
+                        <span>{event.name}</span>
+                        <span>{event.ticketPrice}</span>
+                      </div> : null
+                  ))
+                
+              )}
+              {/*               {tickets.map((event) => (
+                !event.isPaid ? 
                   <div className="ticket  flex w-[100%] h-28 rounded-sm transition-all items-center justify-around">
                     <img src={ticket.event.images} className="w-32 h-20 rounded-lg" />
                     <span>{ticket.event.name}</span>
                     <span>{ticket.event.ticketPrice}</span>
                   </div> : null
-              ))}
+              ))} */}
             </div>
           </div>
         </div>
@@ -41,11 +57,11 @@ function Cart() {
             <div className="flex flex-col space-y-8">
               {tickets.map((ticket) => (
                 ticket.isPaid ?
-                <div className="ticket  flex w-[100%] h-28 rounded-sm transition-all items-center justify-around">
-                <img src={ticket.event.images} className="w-32 h-20 rounded-lg" />
-                <span>{ticket.event.name}</span>
-                <span>{ticket.event.ticketPrice}</span>
-              </div> : null
+                  <div className="ticket  flex w-[100%] h-28 rounded-sm transition-all items-center justify-around">
+                    <img src={ticket.event.images} className="w-32 h-20 rounded-lg" />
+                    <span>{ticket.event.name}</span>
+                    <span>{ticket.event.ticketPrice}</span>
+                  </div> : null
               ))}
             </div>
           </div>

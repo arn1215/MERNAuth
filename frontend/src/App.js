@@ -1,5 +1,5 @@
 
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate, useRoutes } from 'react-router-dom'
 import jwt_decode from 'jwt-decode';
 
 import { useEffect } from 'react';
@@ -21,13 +21,18 @@ function App() {
   const dispatch = useDispatch()
   const token = localStorage.getItem("user")
   const session = useSelector(state => state.session)
-  const user = session.user
+  const cart = useSelector(state => state.cartItems)
+  const user = session.user 
+  
 
   useEffect(() => {
     if (token && user) {
-    /*   dispatch(getToken(jwt_decode(localStorage.getItem("user")))) */
-    console.log("yo")
-    }
+    dispatch(getToken(jwt_decode(localStorage.getItem("user")))) 
+  }
+  const cart = localStorage.getItem("cartItems")
+  if (!cart) {
+    localStorage.setItem("cartItems", JSON.stringify([]))
+  }
   }, [localStorage])
 
   return (
@@ -43,7 +48,8 @@ function App() {
         <Route path="register" element={<Register />} />
         <Route path='events/:id' element={<Event />} />
         
-        <Route path='/cart' element={<ProtectedRoutes><Cart /></ProtectedRoutes>} />
+        <Route path="cart" element={<ProtectedRoutes><Cart /></ProtectedRoutes>} />
+        <Route path="cart/:id" element={<ProtectedRoutes><Cart /></ProtectedRoutes>} />
       </Routes>
     </BrowserRouter>
   );

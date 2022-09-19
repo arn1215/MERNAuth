@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
+import  cartSlice  from './cart'
 import  eventSlice from './event'
 import eventsSlice  from './events'
 import sessionSlice from './session'
@@ -9,5 +10,6 @@ export const store = configureStore({
     event: eventSlice,
     events: eventsSlice,
     tickets: ticketsSlice,
+    cart: cartSlice
   },
 })

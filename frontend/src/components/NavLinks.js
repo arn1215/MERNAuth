@@ -16,18 +16,18 @@ function NavLinks() {
   return (
 
     <div>
-      {!user ?
+      {!user?._id ?
         
         <>
-          <div class="items-center hidden space-x-4 lg:flex">
+          <div className="items-center hidden space-x-4 lg:flex">
             <button
-              class="px-5 py-2 text-sm font-medium text-gray-600 bg-gray-100 rounded-lg"
+              className="px-5 py-2 text-sm font-medium text-gray-600 bg-gray-100 rounded-lg"
               onClick={() => navigate("/login")}
             >
               Log in
             </button>
 {/*          todo   <button
-              class="px-5 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg"
+              className="px-5 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg"
               onClick={() => navigate("/register")}
             >
               Sign up

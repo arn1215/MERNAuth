@@ -23,7 +23,7 @@ function Home() {
       <div className='w-[90%] flex items-center flex-wrap justify-center  h-screen mt-20 mb-20'>
 
         {events.map(event => (
-          <EventCard event={event} />
+          <EventCard event={event}  key={event._id}/>
         ))}
       </div>
     </div>

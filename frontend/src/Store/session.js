@@ -26,7 +26,7 @@ export const getToken = createAsyncThunk(
 export const sessionSlice = createSlice({
   name: "session",
   initialState: {
-    user: storageData ? storageData : null,
+    user: localStorage.getItem('user') ? jwt_decode(JSON.stringify(localStorage.getItem("user"))) : {}, 
     status: null
   },
 
