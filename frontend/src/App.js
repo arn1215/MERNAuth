@@ -25,7 +25,8 @@ function App() {
 
   useEffect(() => {
     if (token && user) {
-      dispatch(getToken(jwt_decode(localStorage.getItem("user"))))
+    /*   dispatch(getToken(jwt_decode(localStorage.getItem("user")))) */
+    console.log("yo")
     }
   }, [localStorage])
 

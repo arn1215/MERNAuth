@@ -1,7 +1,17 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import jwt_decode from "jwt-decode";
 
-const storageData = jwt_decode(JSON.stringify(localStorage.getItem("user")));
+
+let storageData = null
+
+const jwtCatch = () => {
+  try{
+    jwt_decode(JSON.stringify(localStorage.getItem("user")));
+  } catch (e) {
+    console.error(e)
+  }
+} 
+storageData = jwtCatch()
 
 export const getToken = createAsyncThunk(
   "token/getToken",

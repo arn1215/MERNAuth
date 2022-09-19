@@ -16,10 +16,10 @@ function Register() {
     if (password === confirmPassword) {
 
       const newUser = {
-        userName,
+        name: userName,
         password,
         email,
-        confirmPassword
+    
       }
       try {
         toast.loading("Loading...")
