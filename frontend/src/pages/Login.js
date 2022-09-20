@@ -36,7 +36,7 @@ function Login() {
     }
   }
   return (
-    <div className='flex justify-center items-center h-screen'>
+    <div className='animate flex justify-center items-center h-screen'>
 
 
       <div className='w-[500px] space-y-5 flex-col p-5 shadow-lg border border-gray-300'>

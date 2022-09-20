@@ -42,7 +42,7 @@ function Register() {
 
   }
   return (
-    <div className='flex justify-center items-center h-screen'>
+    <div className='animate flex justify-center items-center h-screen'>
 
       <div className='w-[500px] space-y-5 flex-col p-5 shadow-lg border border-gray-300'>
         <h1 className='font-semibold text-3xl text-gray-700'>Welcome to MERN AUTH APP</h1>

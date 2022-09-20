@@ -19,7 +19,7 @@ function Home() {
   }, [])
 
   return (
-    <div className='flex justify-center items-center '>
+    <div className='animate flex justify-center items-center '>
       <div className='w-[90%] flex items-center flex-wrap justify-center  h-screen mt-20 mb-20'>
 
         {events.map(event => (

@@ -27,8 +27,8 @@ function Event() {
 
 
   return (
-    <div className="flex flex-col justify-center items-center">
-      <div className="flex w-[50%] h-96 bg-black  bg-cover rounded-t-2xl mt-32" style={{ backgroundImage: `url(${event.images})` }}>
+    <div className="animate flex flex-col justify-center items-center">
+      <div className=" flex w-[50%] h-96 bg-black  bg-cover rounded-t-2xl mt-32" style={{ backgroundImage: `url(${event.images})` }}>
       </div>
       <div className="flex flex-col bg-slate-700 w-[50%] h-32 rounded-b-3xl text-md text-white p-4 shadow-2xl">
 
