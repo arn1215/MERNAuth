@@ -28,14 +28,15 @@ function Cart() {
           <div className="bg-slate-700 w-4/6  min-h-full shadow-xl p-10 overflow-scroll rounded-md">
             <h1 className="text-2xl">Check Out</h1>
             <div className="flex flex-col space-y-8">
-              {cartItems.length === 0 ? <h1>Your cart is empty</h1> : (
+              {cartItems?.length === 0 ? <h1>Your cart is empty</h1> : (
                 
-                  cartItems.map((event) => (
+                  cartItems?.map((event) => (
                     true ?
                       <div className="ticket  flex w-[100%] h-28 rounded-sm transition-all items-center justify-around">
                         <img src={event.images} className="w-32 h-20 rounded-lg" />
                         <span>{event.name}</span>
                         <span>{event.ticketPrice}</span>
+                        <span>{event.qty}</span>
                       </div> : null
                   ))
                 

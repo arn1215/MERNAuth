@@ -21,7 +21,7 @@ function App() {
   const dispatch = useDispatch()
   const token = localStorage.getItem("user")
   const session = useSelector(state => state.session)
-  const cart = useSelector(state => state.cartItems)
+  const cart = useSelector(state => state.cart.cartItems)
   const user = session.user 
   
 
@@ -30,9 +30,8 @@ function App() {
     dispatch(getToken(jwt_decode(localStorage.getItem("user")))) 
   }
   const cart = localStorage.getItem("cartItems")
-  if (!cart) {
-    localStorage.setItem("cartItems", JSON.stringify([]))
-  }
+  
+
   }, [localStorage])
 
   return (
