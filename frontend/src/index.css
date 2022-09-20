@@ -37,10 +37,11 @@ body {
 
 
   .ticket {
-    background-color: #fca177
+    background-color: #669ac4;
+    cursor: pointer;
   }
 
   
   .ticket:hover {
-    background-color: #ff9868
+    background-color: #65b4d8
   }

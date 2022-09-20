@@ -32,7 +32,9 @@ function Cart() {
                 
                   cartItems?.map((event) => (
                     true ?
-                      <div className="ticket  flex w-[100%] h-28 rounded-sm transition-all items-center justify-around">
+                      <div 
+                      className="ticket  flex w-[100%] h-28 rounded-sm transition-all items-center justify-around"
+                      >
                         <img src={event.images} className="w-32 h-20 rounded-lg" />
                         <span>{event.name}</span>
                         <span>{event.ticketPrice}</span>

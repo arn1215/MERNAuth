@@ -11,22 +11,24 @@ function Event() {
   const params = useParams()
   const navigate = useNavigate()
   const event = useSelector(state => state.event.event)
-  const cartItems = useSelector(state => state.cart.cartItems)
+  const cart = useSelector(state => state.cart)
   const [qty, setQty] = useState(1)
   console.log(typeof params.id, params.id)
   useEffect(() => {
     dispatch(getEvent(params.id))
+    localStorage.setItem("cartItems", JSON.stringify(cart.cartItems))
   }, [params])
 
-  const addToCart = () => {
-    dispatch(addItem({ id: event._id, qty})).then( cartItems !== [] ? localStorage.setItem("cartItems", JSON.stringify(cartItems)) : null)
+  const addToCart = async() => {
+   await dispatch(addItem({ id: event._id, qty}))
+
     navigate(`/cart/${params.id}?qty=${qty}`)
   }
 
 
   return (
     <div className="flex flex-col justify-center items-center">
-      <div className="flex w-[50%] h-96 bg-black  bg-cover rounded-t-2xl mt-48" style={{ backgroundImage: `url(${event.images})` }}>
+      <div className="flex w-[50%] h-96 bg-black  bg-cover rounded-t-2xl mt-32" style={{ backgroundImage: `url(${event.images})` }}>
       </div>
       <div className="flex flex-col bg-slate-700 w-[50%] h-32 rounded-b-3xl text-md text-white p-4 shadow-2xl">
 

@@ -12,7 +12,7 @@ export const addItem = createAsyncThunk(
     const data = await fetch(`/api/events/${id}`)
     const res = await data.json()
     return {
-      event: res._id,
+      _id: res._id,
       name: res.name,
       images: res.images,
       ticketPrice: res.ticketPrice,
@@ -40,11 +40,12 @@ export const cartSlice = createSlice({
 
     builder.addCase(addItem.fulfilled, (state, action) => {
       const item = action.payload
-      const itemExists = state.cartItems.find(x => x.event === item.event)
+      localStorage.setItem("cartItems", JSON.stringify(item))
+      const itemExists = state.cartItems.find(x => x._id === item._id)
       if (itemExists) {
         return {
           ...state,
-          cartItems: state.cartItems.map(x => x.event === itemExists.event ? item : x)
+          cartItems: state.cartItems.map(x => x._id === itemExists._id ? item : x)
         }
       } else {
         return {
