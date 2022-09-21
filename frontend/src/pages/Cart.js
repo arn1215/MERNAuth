@@ -81,6 +81,7 @@ function Cart() {
                         <option>8</option>
                         <option>9</option>
                         <option>10</option>
+                        <option selected>{event.qty}</option>
                       </select>
                       <span>{event.qty}</span>
                       <button onClick={() => dispatch(deleteItem(event))}>
