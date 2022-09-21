@@ -29,14 +29,14 @@ export const deleteItem = createAsyncThunk(
   }
 )
 
-const cartItemsFromStorage = localStorage.getItem('cartItems') ? JSON.parse(
+const cartItemsFromStorage = JSON.parse(
   localStorage.getItem('cartItems')
-) : []
+)
 
 export const cartSlice = createSlice({
   name: "cart",
   initialState: {
-    cartItems: cartItemsFromStorage,
+    cartItems: cartItemsFromStorage || {},
     status: null
   },
   extraReducers: (builder) => {
@@ -50,6 +50,7 @@ export const cartSlice = createSlice({
     builder.addCase(addItem.fulfilled, (state, action) => {
       const item = action.payload
       state.cartItems[item._id] = item
+      state.status = 'success'
     })
 
     builder.addCase(addItem.rejected, (state, action) => {
@@ -63,6 +64,7 @@ export const cartSlice = createSlice({
     })
 
     builder.addCase(deleteItem.fulfilled, (state, action) => {
+
       const item = action.payload
       delete state.cartItems[item._id]
 

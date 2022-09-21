@@ -10,11 +10,14 @@ function Cart() {
   const dispatch = useDispatch()
   const user = useSelector(state => state.session)
   const tickets = useSelector(state => state.tickets.tickets)
+  const vanillaCartItems = useSelector(state => state.cart.cartItems)
   const cartItems = Object.values(useSelector(state => state.cart.cartItems))
   const navigate = useNavigate()
 
   useEffect(() => {
-
+    if (vanillaCartItems !== {}) {
+      localStorage.setItem("cartItems", JSON.stringify(vanillaCartItems))
+    }
     const fetchTickets = async () => {
 
       await dispatch(getTickets(user?.user?._id))

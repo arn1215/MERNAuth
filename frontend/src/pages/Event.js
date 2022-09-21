@@ -16,7 +16,7 @@ function Event() {
 
   useEffect(() => {
     dispatch(getEvent(params.id))
-    localStorage.setItem("cartItems", JSON.stringify(cart.cartItems))
+
   }, [params])
 
   const addToCart = async () => {
