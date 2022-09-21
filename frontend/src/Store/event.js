@@ -22,13 +22,13 @@ export const eventSlice = createSlice({
     status: null
   },
   extraReducers: (builder) => {
-    
+
     builder.addCase(getEvent.pending, (state, action) => {
-      state.status ='loading'
+      state.status = 'loading'
     })
 
     builder.addCase(getEvent.fulfilled, (state, action) => {
-      state.status ='success'
+      state.status = 'success'
       state.event = action.payload
     })
 

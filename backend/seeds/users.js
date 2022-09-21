@@ -17,6 +17,7 @@ const users = [
     name: 'Jimi',
     email: 'jimi@whatsup.com',
     password: bcrypt.hashSync('password', 10)
+
   },
 ]
 

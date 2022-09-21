@@ -5,12 +5,12 @@ import jwt_decode from "jwt-decode";
 let storageData = null
 
 const jwtCatch = () => {
-  try{
+  try {
     jwt_decode(JSON.stringify(localStorage.getItem("user")));
   } catch (e) {
     console.error(e)
   }
-} 
+}
 storageData = jwtCatch()
 
 export const getToken = createAsyncThunk(
@@ -26,12 +26,12 @@ export const getToken = createAsyncThunk(
 export const sessionSlice = createSlice({
   name: "session",
   initialState: {
-    user: localStorage.getItem('user') ? jwt_decode(JSON.stringify(localStorage.getItem("user"))) : {}, 
+    user: localStorage.getItem('user') ? jwt_decode(JSON.stringify(localStorage.getItem("user"))) : {},
     status: null
   },
 
   extraReducers: {
-    [getToken.pending] : (state, action) => {
+    [getToken.pending]: (state, action) => {
       state.status = 'loading'
     },
     [getToken.fulfilled]: (state, action) => {
@@ -41,7 +41,7 @@ export const sessionSlice = createSlice({
     [getToken.rejected]: (state, action) => {
       state.status = 'failed'
     },
-    
+
 
   }
 })

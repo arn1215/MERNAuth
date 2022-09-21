@@ -13,14 +13,14 @@ function Event() {
   const event = useSelector(state => state.event.event)
   const cart = useSelector(state => state.cart)
   const [qty, setQty] = useState(1)
-  console.log(typeof params.id, params.id)
+
   useEffect(() => {
     dispatch(getEvent(params.id))
     localStorage.setItem("cartItems", JSON.stringify(cart.cartItems))
   }, [params])
 
-  const addToCart = async() => {
-   await dispatch(addItem({ id: event._id, qty}))
+  const addToCart = async () => {
+    await dispatch(addItem({ id: event._id, qty })).then(res => console.log(res))
 
     navigate(`/cart/${params.id}?qty=${qty}`)
   }

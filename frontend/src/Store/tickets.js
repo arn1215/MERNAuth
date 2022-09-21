@@ -25,11 +25,11 @@ export const ticketsSlice = createSlice({
   extraReducers: (builder) => {
 
     builder.addCase(getTickets.pending, (state, action) => {
-      state.status ='loading'
+      state.status = 'loading'
     })
 
     builder.addCase(getTickets.fulfilled, (state, action) => {
-      state.status ='success'
+      state.status = 'success'
       state.tickets = action.payload
     })
 

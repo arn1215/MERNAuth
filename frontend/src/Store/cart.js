@@ -7,8 +7,8 @@ createAsyncThunk()
 
 export const addItem = createAsyncThunk(
   "cart/addItem",
-  async (cartData) => {
-    const {id, qty} = cartData
+  async (itemData) => {
+    const { id, qty } = itemData
     const data = await fetch(`/api/events/${id}`)
     const res = await data.json()
     return {
@@ -20,8 +20,15 @@ export const addItem = createAsyncThunk(
       qty: Number(qty)
     }
   }
-  
 )
+
+export const deleteItem = createAsyncThunk(
+  "cart/deleteItem",
+  async (itemData) => {
+    return itemData
+  }
+)
+
 const cartItemsFromStorage = localStorage.getItem('cartItems') ? JSON.parse(
   localStorage.getItem('cartItems')
 ) : []
@@ -33,30 +40,35 @@ export const cartSlice = createSlice({
     status: null
   },
   extraReducers: (builder) => {
-    
+
+
+    //ADD AN ITEM====================================================================
     builder.addCase(addItem.pending, (state, action) => {
-      state.status ='loading'
+      state.status = 'loading'
     })
 
     builder.addCase(addItem.fulfilled, (state, action) => {
       const item = action.payload
-      localStorage.setItem("cartItems", JSON.stringify(item))
-      const itemExists = state.cartItems.find(x => x._id === item._id)
-      if (itemExists) {
-        return {
-          ...state,
-          cartItems: state.cartItems.map(x => x._id === itemExists._id ? item : x)
-        }
-      } else {
-        return {
-          ...state,
-          cartItems: [...state.cartItems, item]
-        }
-        
-      }
+      state.cartItems[item._id] = item
     })
 
     builder.addCase(addItem.rejected, (state, action) => {
+      state.status = 'failed'
+    })
+
+    //DELETE AN ITEM =======================================================================
+
+    builder.addCase(deleteItem.pending, (state, action) => {
+      state.status = 'loading'
+    })
+
+    builder.addCase(deleteItem.fulfilled, (state, action) => {
+      const item = action.payload
+      delete state.cartItems[item._id]
+
+    })
+
+    builder.addCase(deleteItem.rejected, (state, action) => {
       state.status = 'failed'
     })
 

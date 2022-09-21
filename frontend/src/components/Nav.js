@@ -11,11 +11,10 @@ function Nav() {
     <>
       <header className=" bg-gray-300">
         <div
-          className="flex fixed items-center justify-around h-12 px-4 mx-auto w-screen bg-gray-300 shadow-md"
-        >
-          <img src={image}  alt="logo" style={{height: '50px'}}/>
-          <input 
-          className='w-96 h-8 rounded'
+          className="flex fixed items-center justify-around h-12 px-4 mx-auto w-screen bg-gray-300 shadow-md" z>
+          <img src={image} alt="logo" style={{ height: '50px' }} />
+          <input
+            className='w-96 h-8 rounded'
           />
           <button onClick={() => navigate("/cart")}>cart</button>
           <NavLinks />
