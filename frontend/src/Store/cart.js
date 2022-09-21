@@ -1,8 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-
-
-
 createAsyncThunk()
 
 export const addItem = createAsyncThunk(
@@ -28,6 +25,14 @@ export const deleteItem = createAsyncThunk(
     return itemData
   }
 )
+
+export const clearCart = createAsyncThunk(
+  "cart/clear",
+  async (itemData) => {
+    return {}
+  }
+)
+
 
 const cartItemsFromStorage = JSON.parse(
   localStorage.getItem('cartItems')
@@ -74,6 +79,24 @@ export const cartSlice = createSlice({
     })
 
     builder.addCase(deleteItem.rejected, (state, action) => {
+      state.status = 'failed'
+    })
+
+
+    //CLEAR CART ON LOGOUT =======================================================================
+
+    builder.addCase(clearCart.pending, (state, action) => {
+      state.status = 'loading'
+    })
+
+    builder.addCase(clearCart.fulfilled, (state, action) => {
+
+      const item = action.payload
+      state.cartItems = item
+
+    })
+
+    builder.addCase(clearCart.rejected, (state, action) => {
       state.status = 'failed'
     })
 

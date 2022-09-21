@@ -1,6 +1,7 @@
 
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { clearCart } from '../Store/cart'
 import { getToken } from '../Store/session'
 
 function Logout() {
@@ -8,8 +9,11 @@ function Logout() {
   const dispatch = useDispatch()
 
   const logout = () => {
-    localStorage.removeItem('user')
+    localStorage.clear()
     dispatch(getToken(null))
+    dispatch(clearCart())
+
+    //todo 
     let token = JSON.parse(localStorage.getItem("user"))
 
     navigate("/login")
