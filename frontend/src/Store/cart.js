@@ -2,6 +2,14 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 createAsyncThunk()
 
+const updateTotals = (old, current, action) => {
+  if (action === "cart/addItem") {
+    return Math.abs(current - old)
+  } else {
+
+  }
+}
+
 export const addItem = createAsyncThunk(
   "cart/addItem",
   async (itemData) => {
@@ -42,6 +50,7 @@ export const cartSlice = createSlice({
   name: "cart",
   initialState: {
     cartItems: cartItemsFromStorage || {},
+    subTotal: 0,
     status: null
   },
   extraReducers: (builder) => {
@@ -54,7 +63,10 @@ export const cartSlice = createSlice({
 
     builder.addCase(addItem.fulfilled, (state, action) => {
       const item = action.payload
+      const newTotal = action.payload
+
       state.cartItems[item._id] = item
+      state.subTotal += (item.qty * item.ticketPrice)
       localStorage.removeItem("cartItems")
       localStorage.setItem("cartItems", JSON.stringify(state.cartItems))
       state.status = 'success'
@@ -73,6 +85,7 @@ export const cartSlice = createSlice({
     builder.addCase(deleteItem.fulfilled, (state, action) => {
 
       const item = action.payload
+      state.subTotal -= (item.qty * item.ticketPrice)
       delete state.cartItems[item._id]
       localStorage.setItem("cartItems", JSON.stringify(state.cartItems))
 
