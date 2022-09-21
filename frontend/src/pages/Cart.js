@@ -1,4 +1,5 @@
 import { useEffect } from "react"
+import toast from "react-hot-toast"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { addItem, deleteItem } from "../Store/cart"
@@ -29,9 +30,20 @@ function Cart() {
     }
   }, [])
 
+  const updateStorage = () => {
+    try {
+      localStorage.removeItem('cartItems')
+      localStorage.setItem('cartItems', JSON.stringify(vanillaCartItems))
+      toast.success("set")
+    } catch (error) {
+      toast.error(`${error.message}`)
+    }
+  }
+
   const modifyCart = async (e, event) => {
     const qty = e.target.value
-    await dispatch(addItem({ id: event._id, qty })).then(res => console.log(res))
+    dispatch(addItem({ id: event._id, qty }))
+
   }
 
   return (
@@ -39,10 +51,9 @@ function Cart() {
       <div className="animate flex flex-col justify-around h-screen mt-20 text-white">
         <div className="flex flex-col  items-center h-96">
           <div className="bg-slate-700 w-4/6  min-h-full shadow-xl p-10 overflow-scroll rounded-md">
-            <h1 className="text-2xl">Check Out</h1>
+            <h1 className="text-2xl">Cart</h1>
             <div className="flex flex-col space-y-8">
               {cartItems?.length === 0 ? <h1>Your cart is empty</h1> : (
-
                 cartItems?.map((event) => (
                   true ?
                     <div
@@ -53,14 +64,24 @@ function Cart() {
                       <img src={event.images} className="w-32 h-20 rounded-lg" alt="event" />
                       <span>{event.name}</span>
                       <span>{(event.ticketPrice * event.qty).toFixed(2)}</span>
-                      <input
+                      <select
                         className="w-8 rounded text-black"
                         min={1}
                         max={event.ticketsInStock}
                         type="number"
                         onChange={(e) => modifyCart(e, event)}
-
-                      />
+                      >
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                      </select>
                       <span>{event.qty}</span>
                       <button onClick={() => dispatch(deleteItem(event))}>
                         Delete
@@ -70,14 +91,6 @@ function Cart() {
                 ))
 
               )}
-              {/*               {tickets.map((event) => (
-                !event.isPaid ? 
-                  <div className="ticket  flex w-[100%] h-28 rounded-sm transition-all items-center justify-around">
-                    <img src={ticket.event.images} className="w-32 h-20 rounded-lg" />
-                    <span>{ticket.event.name}</span>
-                    <span>{ticket.event.ticketPrice}</span>
-                  </div> : null
-              ))} */}
             </div>
           </div>
         </div>
@@ -88,7 +101,7 @@ function Cart() {
               {tickets.map((ticket) => (
                 ticket.isPaid ?
                   <div className="ticket  flex w-[100%] h-28 rounded-sm transition-all items-center justify-around">
-                    <img src={ticket.event.images} className="w-32 h-20 rounded-lg" />
+                    <img alt="event" src={ticket.event.images} className="w-32 h-20 rounded-lg" />
                     <span>{ticket.event.name}</span>
                     <span>{ticket.event.ticketPrice}</span>
                   </div> : null

@@ -50,6 +50,8 @@ export const cartSlice = createSlice({
     builder.addCase(addItem.fulfilled, (state, action) => {
       const item = action.payload
       state.cartItems[item._id] = item
+      localStorage.removeItem("cartItems")
+      localStorage.setItem("cartItems", JSON.stringify(state.cartItems))
       state.status = 'success'
     })
 

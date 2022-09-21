@@ -11,85 +11,87 @@ body {
 }
 
 /* ===== Scrollbar CSS ===== */
-  /* Firefox */
-  * {
-    scrollbar-width: auto;
-    scrollbar-color: #5e7383 #ffffff;
-    
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #5e7383 #ffffff;
+
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 16px;
+
+}
+
+*::-webkit-scrollbar-track {
+  background-color: #334155;
+  border-radius: 7px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #92adc2;
+  border-radius: 10px;
+
+}
+
+
+.ticket {
+  background-color: #497294;
+  cursor: pointer;
+}
+
+
+.ticket:hover {
+  background-color: #487991
+}
+
+
+.animate {
+  -webkit-animation: anvil 0.1s cubic-bezier(0.18, 0.1, 0.36, 0.9);
+}
+
+
+
+::-webkit-scrollbar-corner {
+  background: rgba(0, 0, 0, 0);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@keyframes anvil {
+  0% {
+    transform: scale(1) translateY(0px);
+    opacity: 0;
   }
 
-  /* Chrome, Edge, and Safari */
-  *::-webkit-scrollbar {
-    width: 16px;
-
+  1% {
+    transform: scale(0.96) translateY(10px);
+    opacity: 0;
   }
 
-  *::-webkit-scrollbar-track {
-    background-color: #334155 ;
-    border-radius: 7px;
-  }
-
-  *::-webkit-scrollbar-thumb {
-    background-color: #92adc2;
-    border-radius: 10px;
+  100% {
+    transform: scale(1) translateY(0px);
+    opacity: 1;
 
   }
-
-
-  .ticket {
-    background-color: #497294;
-    cursor: pointer;
-  }
-
-  
-  .ticket:hover {
-    background-color: #487991
-  }
-
-
-  .animate {
-    -webkit-animation: anvil 0.1s cubic-bezier(0.18, 0.1, 0.36, 0.9);
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  @keyframes anvil {
-    0% {
-      transform: scale(1) translateY(0px);
-      opacity: 0;
-    }
-  
-    1% {
-      transform: scale(0.96) translateY(10px);
-      opacity: 0;
-    }
-  
-    100% {
-      transform: scale(1) translateY(0px);
-      opacity: 1;
-  
-    }
-  }
+}
