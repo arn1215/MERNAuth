@@ -9,10 +9,10 @@ const orderSchema = new mongoose.Schema({
   },
   orderItems: [
     {
-      name: { type: String, required: true },
+      _id: { type: String, required: true },
       qty: { type: Number, required: true },
-      image: { type: String, required: true },
-      price: { type: Number, required: true },
+      images: { type: String, required: true },
+      total: { type: Number, required: true },
       event: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
@@ -20,12 +20,12 @@ const orderSchema = new mongoose.Schema({
       },
     }
   ],
-  shippingAddress: {
-    address: { type: String, required: true },
-    city: { type: String, required: true },
-    postalCode: { type: String, required: true },
-    country: { type: String, required: true },
-  },
+  // shippingAddress: {
+  //   address: { type: String, required: true },
+  //   city: { type: String, required: true },
+  //   postalCode: { type: String, required: true },
+  //   country: { type: String, required: true },
+  // },
   paymentMethod: {
     type: String,
     required: true,
@@ -47,7 +47,7 @@ const orderSchema = new mongoose.Schema({
     default: 0.0
   },
   isPaid: {
-    type: Boolean, 
+    type: Boolean,
     required: true,
     default: false,
   },
@@ -64,9 +64,9 @@ const orderSchema = new mongoose.Schema({
   }
 
 
-}, {
-  timestamps: true,
-})
+},
+  { timestamps: true, }
+)
 
 const Order = mongoose.model('Order', orderSchema)
 

@@ -19,9 +19,12 @@ app.use("/api/auth", authRoute)
 app.use("/api/events", eventRoute)
 app.use("/api/tickets", ticketRoute)
 
+//paypal route
+app.get('/api/config/paypal', (req, res) => res.json({ clientId: process.env.PAYPAL_CLIENT_ID }))
+
 
 const mongodbConnection = require('./config/mongoConnection.js')
-const port = 5000 
+const port = 5000
 
 app.get("/", (req, res) => res.send("hello"))
 app.listen(port, console.log(`MERN JS SERVER listening on port ${port}`))

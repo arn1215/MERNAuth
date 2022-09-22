@@ -16,7 +16,6 @@ function Nav() {
           <input
             className='w-96 h-8 rounded'
           />
-          <button onClick={() => navigate("/cart")}>cart</button>
           <NavLinks />
         </div>
       </header>

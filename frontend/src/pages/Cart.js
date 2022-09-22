@@ -29,6 +29,15 @@ function Cart() {
     } catch (e) {
       console.log(e.message)
     }
+
+    //paypal
+    const paypalScript = async () => {
+      const data = await fetch("http://localhost:5000/api/config/paypal")
+      const { clientId } = await data.json()
+
+    }
+    paypalScript()
+
   }, [])
 
   const updateStorage = () => {
