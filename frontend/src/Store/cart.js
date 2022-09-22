@@ -13,7 +13,7 @@ const updateTotals = (old, current, action) => {
 export const addItem = createAsyncThunk(
   "cart/addItem",
   async (itemData) => {
-    const { id, qty } = itemData
+    const { id, qty, itemTotal } = itemData
     const data = await fetch(`/api/events/${id}`)
     const res = await data.json()
     return {
@@ -22,6 +22,7 @@ export const addItem = createAsyncThunk(
       images: res.images,
       ticketPrice: res.ticketPrice,
       ticketsInStock: res.ticketsInStock,
+      itemTotal: itemTotal,
       qty: Number(qty)
     }
   }

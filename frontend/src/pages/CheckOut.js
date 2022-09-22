@@ -1,17 +1,31 @@
 import { useEffect, useState } from "react"
+import { useSelector } from 'react-redux'
 
 
 function CheckOut() {
+  const orderItems = useSelector(state => state.cart.cartItems)
   const [paymentMethod, setPaymentMethod] = useState("")
 
   useEffect(() => {
 
   }, [])
 
-  const onSubmit = (e) => {
-    e.preventDefault()
-    console.log(paymentMethod)
 
+  const total = () => {
+    let total = 0
+    let arr = Object.entries(orderItems)
+    console.log(arr)
+
+  }
+
+  const onSubmit = async (e) => {
+    e.preventDefault()
+    const order = {
+      orderItems,
+      paymentMethod,
+      totalPrice: await total()
+    }
+    console.log(order)
   }
   return (
     <div className="animate flex flex-col justify-center items-center mt-20">

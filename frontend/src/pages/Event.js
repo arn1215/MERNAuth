@@ -20,9 +20,9 @@ function Event() {
   }, [params])
 
   const addToCart = async () => {
-    await dispatch(addItem({ id: event._id, qty })).then(res => console.log(res))
-
-    navigate(`/cart/${params.id}?qty=${qty}`)
+    let itemTotal = (qty * event.ticketPrice)
+    await dispatch(addItem({ id: event._id, qty, itemTotal })).then(res => console.log(res))
+    navigate(`/cart`)
   }
 
 
