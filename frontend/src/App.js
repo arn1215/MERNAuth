@@ -15,6 +15,7 @@ import Sidebar from './components/Sidebar';
 import { Toaster } from 'react-hot-toast';
 import Event from './pages/Event';
 import Cart from './pages/Cart';
+import CheckOut from './pages/CheckOut';
 
 
 function App() {
@@ -22,15 +23,15 @@ function App() {
   const token = localStorage.getItem("user")
   const session = useSelector(state => state.session)
   const cart = useSelector(state => state.cart.cartItems)
-  const user = session.user 
-  
+  const user = session.user
+
 
   useEffect(() => {
     if (token && user) {
-    dispatch(getToken(jwt_decode(localStorage.getItem("user")))) 
-  }
-  const cart = localStorage.getItem("cartItems")
-  
+      dispatch(getToken(jwt_decode(localStorage.getItem("user"))))
+    }
+    const cart = localStorage.getItem("cartItems")
+
 
   }, [localStorage])
 
@@ -46,9 +47,10 @@ function App() {
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
         <Route path='events/:id' element={<Event />} />
-        
+
         <Route path="cart" element={<ProtectedRoutes><Cart /></ProtectedRoutes>} />
         <Route path="cart/:id" element={<ProtectedRoutes><Cart /></ProtectedRoutes>} />
+        <Route path="checkout" element={<ProtectedRoutes><CheckOut /></ProtectedRoutes>} />
       </Routes>
     </BrowserRouter>
   );

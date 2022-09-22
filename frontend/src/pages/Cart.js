@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import toast from "react-hot-toast"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
@@ -15,6 +15,8 @@ function Cart() {
   const vanillaCartItems = useSelector(state => state.cart.cartItems)
   const cartItems = Object.values(useSelector(state => state.cart.cartItems))
   const navigate = useNavigate()
+
+  const [sdkReady, setSdkReady] = useState(false)
 
   useEffect(() => {
     if (vanillaCartItems !== {}) {
@@ -34,7 +36,14 @@ function Cart() {
     const paypalScript = async () => {
       const data = await fetch("http://localhost:5000/api/config/paypal")
       const { clientId } = await data.json()
-
+      const script = document.createElement('script')
+      script.type = 'text/javascript'
+      script.src = `https://paypal.com/sdk/js?client-id=${clientId}`
+      script.async = true
+      script.onload = () => {
+        setSdkReady(true)
+      }
+      document.body.appendChild(script)
     }
     paypalScript()
 
@@ -109,6 +118,7 @@ function Cart() {
 
             </div>
             <h1>{`SUBTOTAL: ${total.toFixed(2)}`}</h1>
+            <button onClick={() => navigate("/checkout")}>Checkout</button>
           </div>
 
         </div>
