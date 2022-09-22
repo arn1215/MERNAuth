@@ -13,9 +13,11 @@ function CheckOut() {
 
   const total = () => {
     let total = 0
-    let arr = Object.entries(orderItems)
-    console.log(arr)
-
+    let arr = Object.values(orderItems)
+    arr.forEach(item => {
+      total += item.itemTotal
+    })
+    return total
   }
 
   const onSubmit = async (e) => {
@@ -23,7 +25,7 @@ function CheckOut() {
     const order = {
       orderItems,
       paymentMethod,
-      totalPrice: await total()
+      totalPrice: total().toFixed(2)
     }
     console.log(order)
   }
