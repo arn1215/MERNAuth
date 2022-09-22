@@ -15,9 +15,11 @@ app.use(cors())
 const authRoute = require("./routes/auth")
 const eventRoute = require("./routes/event")
 const ticketRoute = require("./routes/ticket")
+const orderRoute = require("./routes/order")
 app.use("/api/auth", authRoute)
 app.use("/api/events", eventRoute)
 app.use("/api/tickets", ticketRoute)
+app.use("/api/orders", orderRoute)
 
 //paypal route
 app.get('/api/config/paypal', (req, res) => res.json({ clientId: process.env.PAYPAL_CLIENT_ID }))

@@ -2,13 +2,6 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 createAsyncThunk()
 
-const updateTotals = (old, current, action) => {
-  if (action === "cart/addItem") {
-    return Math.abs(current - old)
-  } else {
-
-  }
-}
 
 export const addItem = createAsyncThunk(
   "cart/addItem",

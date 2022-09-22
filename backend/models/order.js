@@ -2,24 +2,13 @@ const mongoose = require('mongoose')
 
 
 const orderSchema = new mongoose.Schema({
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    required: true,
-    ref: 'users'
+  userId: {
+    //todo type use to be mongooseschemeobject referencheing user
+    type: String,
   },
-  orderItems: [
-    {
-      _id: { type: String, required: true },
-      qty: { type: Number, required: true },
-      images: { type: String, required: true },
-      total: { type: Number, required: true },
-      event: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: 'Event'
-      },
-    }
-  ],
+  orderItems: {
+
+  },
   // shippingAddress: {
   //   address: { type: String, required: true },
   //   city: { type: String, required: true },

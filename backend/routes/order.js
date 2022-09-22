@@ -10,34 +10,30 @@ const router = express.Router()
 
 
 
-router.post("/orders", async (req, res) => {
+router.post("/", async (req, res) => {
   const {
     orderItems,
     paymentMethod,
-    itemsPrice,
-    taxPrice,
-    shippingPrice,
     totalPrice,
+    userId
   } = req.body
 
   if (orderItems && orderItems.length === 0) {
     res.status(400)
     throw new Error("No order items")
-    return
   } else {
     const order = new Order({
       orderItems,
-      user: req.user,
+      userId,
       paymentMethod,
-      itemsPrice,
-      taxPrice,
-      shippingPrice,
-      totalPrice
+      totalPrice,
     })
 
     const newOrder = await order.save()
     res.status(201).json(newOrder)
   }
 
-  const order = await Order.insertMany({})
 })
+
+
+module.exports = router

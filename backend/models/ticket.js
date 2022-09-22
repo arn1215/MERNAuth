@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+/* const mongoose = require('mongoose')
 
 
 const ticketSchema = new mongoose.Schema({
@@ -55,4 +55,4 @@ const ticketSchema = new mongoose.Schema({
 
 const ticket = mongoose.model('tickets', ticketSchema)
 
-module.exports = ticket
+module.exports = ticket */

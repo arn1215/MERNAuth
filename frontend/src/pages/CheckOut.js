@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react"
-import { useSelector } from 'react-redux'
-
+import { useDispatch, useSelector } from 'react-redux'
+import { addOrder } from "../Store/order"
+import toast from 'react-hot-toast'
 
 function CheckOut() {
   const orderItems = useSelector(state => state.cart.cartItems)
+  const userId = useSelector(state => state.session.user._id)
   const [paymentMethod, setPaymentMethod] = useState("")
-
+  const dispatch = useDispatch()
   useEffect(() => {
-
+    console.log(userId)
   }, [])
 
 
@@ -22,12 +24,19 @@ function CheckOut() {
 
   const onSubmit = async (e) => {
     e.preventDefault()
-    const order = {
-      orderItems,
-      paymentMethod,
-      totalPrice: total().toFixed(2)
+    if (!paymentMethod) {
+      toast.error("Please Enter Payment Method")
+    } else {
+      const order = {
+        userId,
+        orderItems,
+        paymentMethod,
+        totalPrice: total().toFixed(2)
+      }
+      console.log(order)
+      dispatch(addOrder(order))
+      toast.success("Payment Method Added")
     }
-    console.log(order)
   }
   return (
     <div className="animate flex flex-col justify-center items-center mt-20">
