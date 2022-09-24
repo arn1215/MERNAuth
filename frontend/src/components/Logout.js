@@ -20,7 +20,7 @@ function Logout() {
   }
 
   return (
-    <button className="px-5 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg" onClick={logout}>Logout</button>
+    <button className="px-5 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700  transition-all rounded-lg" onClick={logout}>Logout</button>
   )
 }
 
