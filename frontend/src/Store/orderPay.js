@@ -6,6 +6,10 @@ export const orderPay = createAsyncThunk("order/orderPay", async (order, payment
 
 })
 
+export const orderPayReset = createAsyncThunk("order/Reset", async (order, paymentStatus) => {
+
+})
+
 
 export const orderPaySlice = createSlice({
   name: 'orderPay',
@@ -26,6 +30,20 @@ export const orderPaySlice = createSlice({
     builder.addCase(orderPay.rejected, (state, action) => {
       state.status = 'failed'
     })
+
+    builder.addCase(orderPayReset.pending, (state, action) => {
+      state.status = 'loading'
+    })
+
+    builder.addCase(orderPayReset.fulfilled, (state, action) => {
+      state.orderPay = {}
+      state.status = 'success'
+    })
+
+    builder.addCase(orderPayReset.rejected, (state, action) => {
+      state.status = 'failed'
+    })
+
   }
 })
 

@@ -6,6 +6,7 @@ import { addItem, deleteItem } from "../Store/cart"
 import { getTickets } from "../Store/tickets"
 
 
+
 function Cart() {
 
   const dispatch = useDispatch()
@@ -32,20 +33,7 @@ function Cart() {
       console.log(e.message)
     }
 
-    //paypal
-    const paypalScript = async () => {
-      const data = await fetch("http://localhost:5000/api/config/paypal")
-      const { clientId } = await data.json()
-      const script = document.createElement('script')
-      script.type = 'text/javascript'
-      script.src = `https://paypal.com/sdk/js?client-id=${clientId}`
-      script.async = true
-      script.onload = () => {
-        setSdkReady(true)
-      }
-      document.body.appendChild(script)
-    }
-    paypalScript()
+
 
   }, [])
 
