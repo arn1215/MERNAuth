@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import toast from "react-hot-toast"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import cart, { addItem, deleteItem } from "../Store/cart"
+import { addItem, deleteItem } from "../Store/cart"
 import { getTickets } from "../Store/tickets"
 
 
@@ -16,7 +16,6 @@ function Cart() {
   const cartItems = Object.values(useSelector(state => state.cart.cartItems))
   const navigate = useNavigate()
 
-  const [sdkReady, setSdkReady] = useState(false)
 
   useEffect(() => {
     if (vanillaCartItems !== {}) {

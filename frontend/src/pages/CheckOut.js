@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom"
 function CheckOut() {
   const orderItems = useSelector(state => state.cart.cartItems)
   const userId = useSelector(state => state.session.user._id)
-  const orderId = useSelector(state => state.order.order._id)
+  const orderObj = useSelector(state => state.order)
 
   const [paymentMethod, setPaymentMethod] = useState("paypal")
   const [isConfirmed, setIsConfirmed] = useState(false)
@@ -82,7 +82,7 @@ function CheckOut() {
       onSuccess()
       dispatch(clearCart())
       setIsConfirmed(false)
-      dispatch(orderPaid(orderId))
+      dispatch(orderPaid(orderObj.order._id))
       navigate("/cart")
     })
   }
