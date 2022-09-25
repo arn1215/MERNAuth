@@ -35,5 +35,13 @@ router.post("/", async (req, res) => {
 
 })
 
+router.put("/:id", async (req, res) => {
+  const { id } = req.params
+
+  const update = await Order.findByIdAndUpdate({ _id: id }, { isPaid: true })
+
+  res.send(update)
+
+})
 
 module.exports = router

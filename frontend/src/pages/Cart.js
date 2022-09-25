@@ -12,7 +12,6 @@ function Cart() {
   const dispatch = useDispatch()
   const user = useSelector(state => state.session)
   const tickets = useSelector(state => state.tickets.tickets)
-  const subTotal = useSelector(state => state?.cart.subTotal)
   const vanillaCartItems = useSelector(state => state.cart.cartItems)
   const cartItems = Object.values(useSelector(state => state.cart.cartItems))
   const navigate = useNavigate()
@@ -105,8 +104,10 @@ function Cart() {
               )}
 
             </div>
-            <h1>{`SUBTOTAL: ${total.toFixed(2)}`}</h1>
-            <button onClick={() => navigate("/checkout")}>Checkout</button>
+            <div className="w-[100%] p-5 flex flex-col space-y-4">
+              <h1 className="self-end">{`SUBTOTAL: ${total.toFixed(2)}`}</h1>
+              <button className=" align-bottom px-5 py-2 text-sm font-medium text-gray-600 bg-gray-100 hover:bg-gray-200 rounded-lg" onClick={() => navigate("/checkout")}>Checkout</button>
+            </div>
           </div>
 
         </div>

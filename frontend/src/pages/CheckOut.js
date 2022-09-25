@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addOrder } from "../Store/order"
 import toast from 'react-hot-toast'
 import { PayPalButtons, PayPalScriptProvider } from '@paypal/react-paypal-js'
+import { orderPayReset } from "../Store/orderPay"
+import { clearCart } from "../Store/cart"
 
 function CheckOut() {
   const orderItems = useSelector(state => state.cart.cartItems)
@@ -73,6 +75,8 @@ function CheckOut() {
       const { payer } = details
       setApproved(true)
       onSuccess()
+      dispatch(clearCart())
+      setIsConfirmed(false)
 
     })
   }
