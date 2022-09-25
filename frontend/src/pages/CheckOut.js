@@ -1,18 +1,23 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from 'react-redux'
-import { addOrder } from "../Store/order"
+import { addOrder, orderPaid } from "../Store/order"
 import toast from 'react-hot-toast'
 import { PayPalButtons, PayPalScriptProvider } from '@paypal/react-paypal-js'
-import { orderPayReset } from "../Store/orderPay"
 import { clearCart } from "../Store/cart"
+import { useNavigate } from "react-router-dom"
 
 function CheckOut() {
   const orderItems = useSelector(state => state.cart.cartItems)
   const userId = useSelector(state => state.session.user._id)
+  const orderId = useSelector(state => state.order.order._id)
+
   const [paymentMethod, setPaymentMethod] = useState("paypal")
   const [isConfirmed, setIsConfirmed] = useState(false)
   const [approved, setApproved] = useState(false)
+
   const dispatch = useDispatch()
+  const navigate = useNavigate()
+
   useEffect(() => {
     console.log(approved)
     if (approved) {
@@ -77,7 +82,8 @@ function CheckOut() {
       onSuccess()
       dispatch(clearCart())
       setIsConfirmed(false)
-
+      dispatch(orderPaid(orderId))
+      navigate("/cart")
     })
   }
 

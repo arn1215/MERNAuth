@@ -16,6 +16,20 @@ export const addOrder = createAsyncThunk(
   }
 )
 
+export const orderPaid = createAsyncThunk(
+  "order/orderPaid",
+  async (id) => {
+
+    const data = await fetch(`/api/orders/${id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' }
+    })
+    const res = await data.json()
+    return res
+  }
+)
+
+
 export const orderSlice = createSlice({
   name: "order",
   initialState: {
@@ -36,6 +50,22 @@ export const orderSlice = createSlice({
     builder.addCase(addOrder.rejected, (state, action) => {
       state.status = 'failed'
     })
+
+
+    //UPDATE PAID STATUS====================================================================
+    builder.addCase(orderPaid.pending, (state, action) => {
+      state.status = 'loading'
+    })
+
+    builder.addCase(orderPaid.fulfilled, (state, action) => {
+      state.order.paid = true
+    })
+
+    builder.addCase(orderPaid.rejected, (state, action) => {
+      state.status = 'failed'
+    })
+
+
 
   }
 })

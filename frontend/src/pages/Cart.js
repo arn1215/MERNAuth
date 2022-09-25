@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import toast from "react-hot-toast"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { addItem, deleteItem } from "../Store/cart"
+import cart, { addItem, deleteItem } from "../Store/cart"
 import { getTickets } from "../Store/tickets"
 
 
@@ -106,7 +106,9 @@ function Cart() {
             </div>
             <div className="w-[100%] p-5 flex flex-col space-y-4">
               <h1 className="self-end">{`SUBTOTAL: ${total.toFixed(2)}`}</h1>
-              <button className=" align-bottom px-5 py-2 text-sm font-medium text-gray-600 bg-gray-100 hover:bg-gray-200 rounded-lg" onClick={() => navigate("/checkout")}>Checkout</button>
+              {cartItems.length > 0 &&
+                <button className=" align-bottom px-5 py-2 text-sm font-medium text-gray-600 bg-gray-100 hover:bg-gray-200 rounded-lg" onClick={() => navigate("/checkout")}>Checkout</button>
+              }
             </div>
           </div>
 
