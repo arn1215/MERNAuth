@@ -3,6 +3,7 @@ import toast from "react-hot-toast"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { addItem, deleteItem } from "../Store/cart"
+import { getPaidItems } from "../Store/paidOrders"
 import { getTickets } from "../Store/tickets"
 
 
@@ -14,6 +15,7 @@ function Cart() {
   const tickets = useSelector(state => state.tickets.tickets)
   const vanillaCartItems = useSelector(state => state.cart.cartItems)
   const cartItems = Object.values(useSelector(state => state.cart.cartItems))
+  const paidItems = useSelector(state => state?.paidItems)
   const navigate = useNavigate()
 
 
@@ -31,8 +33,8 @@ function Cart() {
       console.log(e.message)
     }
 
-
-
+    dispatch(getPaidItems(user.user._id))
+    console.log(paidItems)
   }, [])
 
   const updateStorage = () => {
@@ -116,13 +118,17 @@ function Cart() {
           <div className="bg-slate-700 w-4/6  min-h-full shadow-xl p-10 overflow-scroll rounded-md">
             <h1 className="text-2xl">Purchased</h1>
             <div className="flex flex-col space-y-8">
-              {tickets.map((ticket) => (
-                ticket.isPaid ?
-                  <div className="ticket  flex w-[100%] h-28 rounded-sm transition-all items-center justify-around">
-                    <img alt="event" src={ticket.event.images} className="w-32 h-20 rounded-lg" />
-                    <span>{ticket.event.name}</span>
-                    <span>{ticket.event.ticketPrice}</span>
-                  </div> : null
+              {paidItems.paidItems.map(event => (
+                <div
+                  className="ticket  flex w-[100%] h-28 rounded-sm transition-all items-center justify-around"
+                  // onClick={() => navigate(`/events/${event._id}`)}
+                  key={event._id}
+                >
+                  <img src={event.images} className="w-32 h-20 rounded-lg" alt="event" />
+                  <span>{event.name}</span>
+                  <span>{(event.ticketPrice * event.qty).toFixed(2)}</span>
+
+                </div>
               ))}
             </div>
           </div>

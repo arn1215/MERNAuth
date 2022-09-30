@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import toast from 'react-hot-toast'
 import axios from 'axios'
-import {useDispatch} from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { getToken } from '../Store/session'
 import jwt_decode from "jwt-decode";
 import Sidebar from '../components/Sidebar'
@@ -39,14 +39,14 @@ function Login() {
     <div className='animate flex justify-center items-center h-screen'>
 
 
-      <div className='w-[500px] space-y-5 flex-col p-5 shadow-lg border border-gray-300'>
+      <div className='w-[500px] space-y-5 flex-col p-5 shadow-lg border border-gray-300  rounded-xl'>
         <h1 className='font-semibold text-3xl text-gray-700'>Welcome Back</h1>
         <input type='text' placeholder='email' className={inputStyle} onChange={e => setEmail(e.target.value)} value={email} />
         <input type='password' placeholder='password' className={inputStyle} onChange={e => setPassword(e.target.value)} value={password} />
 
         <div className='flex justify-between items-end'>
           <Link className="underline" to='/register'>Click Here To Register</Link>
-          <button className='py-1 px-5 text-white bg-blue-700' onClick={login}>LOGIN</button>
+          <button className='py-1 px-5 text-white bg-blue-700 rounded' onClick={login}>LOGIN</button>
         </div>
 
       </div>

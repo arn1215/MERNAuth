@@ -7,7 +7,8 @@ import { clearCart } from "../Store/cart"
 import { useNavigate } from "react-router-dom"
 
 function CheckOut() {
-  const orderItems = useSelector(state => state.cart.cartItems)
+  const cart = useSelector(state => state.cart)
+  const orderItems = cart.cartItems
   const userId = useSelector(state => state.session.user._id)
   const orderObj = useSelector(state => state.order)
 
@@ -80,16 +81,17 @@ function CheckOut() {
       const { payer } = details
       setApproved(true)
       onSuccess()
+      dispatch(orderPaid(orderObj.order._id))
       dispatch(clearCart())
       setIsConfirmed(false)
-      dispatch(orderPaid(orderObj.order._id))
       navigate("/cart")
     })
   }
 
   const onError = (data, actions) => {
+
     console.log("error happened")
-    toast.error("Order Denied.")
+    toast.error(`${data}`)
   }
 
 
@@ -120,7 +122,7 @@ function CheckOut() {
 
           }
           {isConfirmed &&
-            <PayPalButtons style={{ layout: 'vertical', shape: 'rect', color: 'white', size: 'full' }} createOrder={createOrder} onApprove={onApprove} onError={(e) => console.log(e)}>
+            <PayPalButtons style={{ layout: 'vertical', shape: 'rect', color: 'white', size: 'full' }} createOrder={createOrder} onApprove={onApprove} onError={onError}>
             </PayPalButtons>
           }
         </div>

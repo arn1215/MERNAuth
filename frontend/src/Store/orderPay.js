@@ -6,6 +6,7 @@ export const orderPay = createAsyncThunk("order/orderPay", async (order, payment
 
 })
 
+
 export const orderPayReset = createAsyncThunk("order/Reset", async (order, paymentStatus) => {
 
 })

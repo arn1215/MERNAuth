@@ -6,6 +6,7 @@ import orderSlice from './order'
 import orderPaySlice from './orderPay'
 import sessionSlice from './session'
 import ticketsSlice from "./tickets"
+import paidItemsSlice from './paidOrders'
 export const store = configureStore({
   reducer: {
     session: sessionSlice,
@@ -14,6 +15,7 @@ export const store = configureStore({
     tickets: ticketsSlice,
     cart: cartSlice,
     order: orderSlice,
-    orderPay: orderPaySlice
+    orderPay: orderPaySlice,
+    paidItems: paidItemsSlice
   },
 })

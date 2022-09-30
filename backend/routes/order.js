@@ -44,4 +44,21 @@ router.put("/:id", async (req, res) => {
 
 })
 
+
+router.get("/user/:id", async (req, res) => {
+  const { userId } = req.body
+  let events = []
+  try {
+    const orders = await Order.find({ user: userId, isPaid: true }).select('orderItems')
+    orders.forEach(order => {
+      for (let key in order.orderItems) {
+        events.push(order.orderItems[key])
+      }
+    })
+    res.send(events)
+  } catch (error) {
+    res.send(error)
+  }
+})
+
 module.exports = router

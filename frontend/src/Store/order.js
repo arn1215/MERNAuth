@@ -16,6 +16,8 @@ export const addOrder = createAsyncThunk(
   }
 )
 
+
+
 export const orderPaid = createAsyncThunk(
   "order/orderPaid",
   async (id) => {
@@ -33,7 +35,8 @@ export const orderPaid = createAsyncThunk(
 export const orderSlice = createSlice({
   name: "order",
   initialState: {
-    status: null
+    status: null,
+    orderItems: []
   },
   extraReducers: (builder) => {
 
@@ -50,6 +53,8 @@ export const orderSlice = createSlice({
     builder.addCase(addOrder.rejected, (state, action) => {
       state.status = 'failed'
     })
+
+
 
 
     //UPDATE PAID STATUS====================================================================

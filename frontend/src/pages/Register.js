@@ -19,7 +19,7 @@ function Register() {
         name: userName,
         password,
         email,
-    
+
       }
       try {
         toast.loading("Loading...")
@@ -44,7 +44,7 @@ function Register() {
   return (
     <div className='animate flex justify-center items-center h-screen'>
 
-      <div className='w-[500px] space-y-5 flex-col p-5 shadow-lg border border-gray-300'>
+      <div className='w-[500px] space-y-5 flex-col p-5 shadow-lg border border-gray-300 rounded-xl'>
         <h1 className='font-semibold text-3xl text-gray-700'>Welcome to MERN AUTH APP</h1>
         <input type='text' placeholder='email' className={inputStyle} onChange={e => setEmail(e.target.value)} value={email} />
         <input type='text' placeholder='username' className={inputStyle} onChange={e => setUserName(e.target.value)} value={userName} />
@@ -53,7 +53,7 @@ function Register() {
 
         <div className='flex justify-between items-end'>
           <Link className="underline" to='/login'>Click Here To Login</Link>
-          <button className='py-1 px-5 text-white bg-blue-700' onClick={register}>REGISTER</button>
+          <button className='py-1 px-5 text-white bg-blue-700 rounded' onClick={register}>REGISTER</button>
         </div>
 
       </div>

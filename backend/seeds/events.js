@@ -3,7 +3,7 @@ const mongoose = require("mongoose")
 const dev = process.env.MONGO_URI
 
 const events = [{
-  name: "event name",
+  name: "Giraffage",
   "headliner": "Giraffage",
   "description": "Join Giraffage at The Bowery",
   "startTime": new Date(),
@@ -14,7 +14,7 @@ const events = [{
   category: 'music',
   venueId: "631c2ec5619377e24d2c1a80"
 }, {
-  name: "event name",
+  name: "Madeon",
   "headliner": "Madeon",
   "description": "Madeon Live at MSG",
   "startTime": new Date(),
@@ -25,7 +25,7 @@ const events = [{
   category: 'music',
   venueId: "631c2ec5619377e24d2c1a80"
 }, {
-  name: "event name",
+  name: "Lil Nas X",
   "headliner": "Lil Nas X",
   "description": "Byline Bank Aragon Ballroom",
   "startTime": new Date(),
@@ -36,7 +36,7 @@ const events = [{
   category: 'music',
   venueId: "631c2ec5619377e24d2c1a80"
 }, {
-  name: "event name",
+  name: "Alan Walker",
   "headliner": "Alan Walker",
   "description": "Walkerverse at Radius",
   "startTime": new Date(),
@@ -47,7 +47,7 @@ const events = [{
   category: 'music',
   venueId: "631c2ec5619377e24d2c1a80"
 }, {
-  name: "event name",
+  name: "The Dear Hunter",
   "headliner": "The Dear Hunter",
   "description": "Metro",
   "startTime": new Date(),
@@ -58,7 +58,7 @@ const events = [{
   category: 'music',
   venueId: "631c2ec5619377e24d2c1a80"
 }, {
-  name: "event name",
+  name: "Mac Demarco",
   "headliner": "Mac Demarco",
   "description": "The Riviera Theatre",
   "startTime": new Date(),
@@ -69,7 +69,7 @@ const events = [{
   category: 'music',
   venueId: "631c2ec5619377e24d2c1a80"
 }, {
-  name: "event name",
+  name: "Denzel Curry",
   "headliner": "Denzel Curry",
   "description": "The Riviera Theatre",
   "startTime": new Date(),
@@ -80,7 +80,7 @@ const events = [{
   category: 'music',
   venueId: "631c2ec5619377e24d2c1a80"
 }, {
-  name: "event name",
+  name: "Jorja Smith",
   "headliner": "Jorja Smith",
   "description": "The Salt Shed",
   "startTime": new Date(),
@@ -91,7 +91,7 @@ const events = [{
   category: 'music',
   venueId: "631c2ec5619377e24d2c1a80"
 }, {
-  name: "event name",
+  name: "Chris Rock",
   "headliner": "Chris Rock",
   "description": "Ego Death World Tour",
   "startTime": new Date(),
@@ -102,7 +102,7 @@ const events = [{
   category: 'music',
   venueId: "631c2ec5619377e24d2c1a80"
 }, {
-  name: "event name",
+  name: "Kevin Hart",
   "headliner": "Kevin Hart",
   "description": "United Center",
   "startTime": new Date(),
@@ -113,7 +113,7 @@ const events = [{
   category: 'music',
   venueId: "631c2ec5619377e24d2c1a80"
 }, {
-  name: "event name",
+  name: "Bill Burr",
   "headliner": "Bill Burr",
   "description": "Bill Burr: Slight Return",
   "startTime": new Date(),
@@ -124,7 +124,7 @@ const events = [{
   category: 'music',
   venueId: "631c2ec5619377e24d2c1a80"
 }, {
-  name: "event name",
+  name: "Trevor Noah",
   "headliner": "Trevor Noah",
   "description": "Back To Abnormal",
   "startTime": new Date(),
@@ -135,7 +135,7 @@ const events = [{
   category: 'music',
   venueId: "631c2ec5619377e24d2c1a80"
 }, {
-  name: "event name",
+  name: "Gabriel Iglesias",
   "headliner": "Gabriel Iglesias",
   "description": "Back On Tour",
   "startTime": new Date(),
@@ -146,7 +146,7 @@ const events = [{
   category: 'music',
   venueId: "631c2ec5619377e24d2c1a80"
 }, {
-  name: "event name",
+  name: "Trixie & Katya",
   "headliner": "Trixie & Katya",
   "description": "Fabulous Fox Theatre",
   "startTime": new Date(),
