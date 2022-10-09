@@ -1,6 +1,5 @@
-.find({ $text: { $search: searchString } })
 
-const { Router } = require("express")
+const { Router, query } = require("express")
 const express = require("express")
 
 
@@ -11,14 +10,13 @@ const Event = require("../models/event")
 const router = express.Router()
 
 
-router.get("/", async (req, res) => {
+router.get("/:query", async (req, res) => {
   try {
-    const events = await Event.find({}).limit(9)
+    const events = await Event.find({ $text: { $search: req.params.query } })
     res.send(events)
   } catch (error) {
     res.send(error.message)
   }
-
 })
 
 
