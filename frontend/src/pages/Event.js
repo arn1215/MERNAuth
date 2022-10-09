@@ -31,20 +31,6 @@ function Event() {
       <div className=" flex w-[50%] h-96 bg-black  bg-cover rounded-t-2xl mt-32" style={{ backgroundImage: `url(${event.images})` }}>
       </div>
       <div className="flex flex-col bg-slate-700 w-[50%] h-32 rounded-b-3xl text-md text-white p-4 shadow-2xl">
-
-        {/*           <h1>Name</h1>
-          <h2>Event</h2>
-          <h2>Price</h2>
-          <span></span>
-        </div>
-        <div className="flex bg-slate-700 w-[100%] h-64 rounded-b-2xl items-center flex-row justify-around">
-          <h1>{event.name}</h1>
-          <h2>{event.description}</h2>
-          <h2>{event.ticketPrice}</h2> 
-
-          */
-
-        }
         <table className="w-[100%]" >
           <tbody>
             <tr className="bg-slate-900 h-10 ">

@@ -7,7 +7,7 @@ const eventSchema = new mongoose.Schema({
     required: true
   },
   headliner: {
-    type: String, 
+    type: String,
     required: true
   },
   description: {
@@ -53,7 +53,7 @@ const eventSchema = new mongoose.Schema({
 }, {
   timestamps: true,
 })
-
+eventSchema.index({ '$**': 'text' });
 const Event = mongoose.model('Event', eventSchema)
 
 module.exports = Event
