@@ -12,6 +12,7 @@ function Home() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const events = useSelector(state => state.events.events)
+  const searchItems = useSelector(state => state.search.searchItems)
 
   useEffect(() => {
     const user = localStorage.getItem('user')
@@ -21,10 +22,21 @@ function Home() {
   return (
     <div className='animate flex justify-center items-center '>
       <div className='w-[90%] flex items-center flex-wrap justify-center  h-screen mt-20 mb-20'>
-
-        {events.map(event => (
-          <EventCard event={event}  key={event._id}/>
-        ))}
+        {/* {searchItems.length > 0 ?
+          searchItems.map(event => (
+            <EventCard event={event} key={event._id} />
+          ))
+          :
+          events.map(event => (
+            <EventCard event={event} key={event._id} />
+          ))
+          
+        } */}
+        {
+          events.map(event => (
+            <EventCard event={event} key={event._id} />
+          ))
+        }
       </div>
     </div>
   )

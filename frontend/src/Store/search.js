@@ -10,6 +10,13 @@ export const getSearchItems = createAsyncThunk(
   }
 )
 
+export const clearSearchItems = createAsyncThunk(
+  "search/clearSearch",
+  async () => {
+    return "clear"
+  }
+)
+
 createAsyncThunk()
 
 
@@ -36,7 +43,18 @@ export const searchSlice = createSlice({
       state.status = 'failed'
     })
 
+    builder.addCase(clearSearchItems.pending, (state, action) => {
+      state.status = 'loading'
+    })
 
+    builder.addCase(clearSearchItems.fulfilled, (state, action) => {
+      state.status = 'success'
+      state.searchItems = []
+    })
+
+    builder.addCase(clearSearchItems.rejected, (state, action) => {
+      state.status = 'failed'
+    })
 
   }
 })
