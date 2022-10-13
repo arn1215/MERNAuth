@@ -14,7 +14,7 @@ function Logout() {
     dispatch(clearCart())
 
     //todo 
-    let token = JSON.parse(localStorage.getItem("user"))
+
 
     navigate("/login")
   }

@@ -11,13 +11,13 @@ function Event() {
   const params = useParams()
   const navigate = useNavigate()
   const event = useSelector(state => state.event.event)
-  const cart = useSelector(state => state.cart)
+
   const [qty, setQty] = useState(1)
 
   useEffect(() => {
     dispatch(getEvent(params.id))
 
-  }, [params])
+  }, [params, dispatch])
 
   const addToCart = async () => {
     let itemTotal = (qty * event.ticketPrice)

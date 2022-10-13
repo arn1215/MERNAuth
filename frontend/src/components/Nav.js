@@ -1,7 +1,7 @@
 
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { clearSearchItems, getSearchItems } from '../Store/search'
 import NavLinks from './NavLinks'
 import SearchItemCard from './SearchItemCard'
@@ -9,7 +9,6 @@ import image from "./Ticketr-logos_white.png"
 function Nav() {
   const [query, setQuery] = useState("")
 
-  const navigate = useNavigate()
   const dispatch = useDispatch()
 
   const search = useSelector(state => state.search)

@@ -5,7 +5,7 @@ import axios from 'axios'
 import { useDispatch } from 'react-redux'
 import { getToken } from '../Store/session'
 import jwt_decode from "jwt-decode";
-import Sidebar from '../components/Sidebar'
+
 
 const inputStyle = 'border-2 border-blue-500 py-2 px-3 rounded-sm w-full'
 

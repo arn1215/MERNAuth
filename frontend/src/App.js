@@ -1,5 +1,5 @@
 
-import { BrowserRouter, Routes, Route, Navigate, useRoutes } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import jwt_decode from 'jwt-decode';
 
 import { useEffect } from 'react';
@@ -22,7 +22,6 @@ function App() {
   const dispatch = useDispatch()
   const token = localStorage.getItem("user")
   const session = useSelector(state => state.session)
-  const cart = useSelector(state => state.cart.cartItems)
   const user = session.user
 
 
@@ -30,10 +29,10 @@ function App() {
     if (token && user) {
       dispatch(getToken(jwt_decode(localStorage.getItem("user"))))
     }
-    const cart = localStorage.getItem("cartItems")
 
 
-  }, [localStorage])
+
+  }, [dispatch, token, user])
 
   return (
     <BrowserRouter>

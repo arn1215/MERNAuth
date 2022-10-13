@@ -12,7 +12,7 @@ function CheckOut() {
   const userId = useSelector(state => state.session.user._id)
   const orderObj = useSelector(state => state.order)
 
-  const [paymentMethod, setPaymentMethod] = useState("paypal")
+
   const [isConfirmed, setIsConfirmed] = useState(false)
   const [approved, setApproved] = useState(false)
 
@@ -25,7 +25,7 @@ function CheckOut() {
       toast.success("Order Approved!")
     }
 
-  }, [])
+  }, [approved])
 
 
   const totalFunc = () => {
@@ -39,19 +39,17 @@ function CheckOut() {
 
   const onSubmit = async (e) => {
     e.preventDefault()
-    if (!paymentMethod) {
-      toast.error("Please Enter Payment Method")
-    } else {
-      const order = {
-        userId,
-        orderItems,
-        paymentMethod,
-        totalPrice: totalRes.toFixed(2)
-      }
-      console.log(order)
-      dispatch(addOrder(order))
-      setIsConfirmed(true)
+
+    const order = {
+      userId,
+      orderItems,
+      paymentMethod: "paypal",
+      totalPrice: totalRes.toFixed(2)
     }
+    console.log(order)
+    dispatch(addOrder(order))
+    setIsConfirmed(true)
+
   }
   const totalRes = totalFunc()
 
@@ -78,7 +76,6 @@ function CheckOut() {
 
   const onApprove = (data, actions) => {
     return actions.order.capture().then(details => {
-      const { payer } = details
       setApproved(true)
       onSuccess()
       dispatch(orderPaid(orderObj.order._id))

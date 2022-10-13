@@ -1,5 +1,4 @@
 import { useEffect } from "react"
-import toast from "react-hot-toast"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { addItem, deleteItem } from "../Store/cart"
@@ -12,7 +11,6 @@ function Cart() {
 
   const dispatch = useDispatch()
   const user = useSelector(state => state.session)
-  const tickets = useSelector(state => state.tickets.tickets)
   const vanillaCartItems = useSelector(state => state.cart.cartItems)
   const cartItems = Object.values(useSelector(state => state.cart.cartItems))
   const paidItems = useSelector(state => state?.paidItems)
@@ -35,17 +33,17 @@ function Cart() {
 
     dispatch(getPaidItems(user.user._id))
     console.log(paidItems)
-  }, [])
+  }, [dispatch, paidItems, user, vanillaCartItems])
 
-  const updateStorage = () => {
-    try {
-      localStorage.removeItem('cartItems')
-      localStorage.setItem('cartItems', JSON.stringify(vanillaCartItems))
-      toast.success("set")
-    } catch (error) {
-      toast.error(`${error.message}`)
-    }
-  }
+  // const updateStorage = () => {
+  //   try {
+  //     localStorage.removeItem('cartItems')
+  //     localStorage.setItem('cartItems', JSON.stringify(vanillaCartItems))
+  //     toast.success("set")
+  //   } catch (error) {
+  //     toast.error(`${error.message}`)
+  //   }
+  // }
 
   let total = 0;
 

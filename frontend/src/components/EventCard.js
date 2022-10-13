@@ -1,12 +1,12 @@
-import { useDispatch } from "react-redux"
+
 import { useNavigate } from "react-router-dom"
-import { getEvent } from "../Store/events"
+
 
 
 function EventCard({ event }) {
 
   const navigate = useNavigate()
-  const dispatch = useDispatch()
+
 
   const onClick = async (id) => {
 

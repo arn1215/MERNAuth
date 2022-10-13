@@ -57,7 +57,7 @@ export const cartSlice = createSlice({
 
     builder.addCase(addItem.fulfilled, (state, action) => {
       const item = action.payload
-      const newTotal = action.payload
+
 
       state.cartItems[item._id] = item
       state.subTotal += (item.qty * item.ticketPrice)
