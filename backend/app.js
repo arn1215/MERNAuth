@@ -28,7 +28,7 @@ app.get('/api/config/paypal', (req, res) => res.json({ clientId: process.env.PAY
 
 
 const mongodbConnection = require('./config/mongoConnection.js')
-const port = 5000
+const port = process.env.PORT
 
 app.get("/", (req, res) => res.send("hello"))
 app.listen(port, console.log(`MERN JS SERVER listening on port ${port}`))
