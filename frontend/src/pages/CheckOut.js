@@ -109,10 +109,16 @@ function CheckOut() {
         <div className="animate flex flex-col justify-center items-center p-10 text-white bg-slate-400 rounded-xl shadow-xl space-y-5">
           {Object.values(orderItems).map(item => {
             return (
-              <div className="flex items-center space-x-10">
+              <div className="flex items-center space-x-10 w-96">
                 <img src={item.images} alt='event' className="h-20 w-20 rounded-xl" />
-                <p>{item.name} x {item.qty}</p>
-                <span>{item.ticketPrice}</span>
+                <div className="w-[100%] ">
+
+                  <p>{item.name} x {item.qty}</p>
+                </div>
+                <div>
+
+                  <span className="">{item.ticketPrice}</span>
+                </div>
               </div>
             )
           })}
