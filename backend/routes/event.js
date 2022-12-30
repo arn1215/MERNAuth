@@ -11,7 +11,7 @@ const router = express.Router()
 
 router.get("/", async (req, res) => {
   try {
-    const events = await Event.find({}).limit(9)
+    const events = await Event.find({}).limit(12)
     res.send(events)
   } catch (error) {
     res.send(error.message)
