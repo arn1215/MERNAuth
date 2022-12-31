@@ -7,7 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
     "data:import": "node seeds/seeder",
-    "data:destroy": "node seeds/seeder -destroy"
+    "data:destroy": "node seeds/seeder -destroy",
+    "start:development": "nodemon -r dotenv/config ./bin/www",
+    "start:production": "node ./bin/www",
+    "build": "echo 'Building....'"
   },
   "repository": {
     "type": "git",
