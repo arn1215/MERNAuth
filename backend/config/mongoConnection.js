@@ -1,9 +1,10 @@
 
 const mongoose = require('mongoose')
-
+require('dotenv').config()
+const db = process.env.MONGO_URI
 const connectDB = async () => {
   try {
-    mongoose.connect("mongodb://mongo:WXqbNNEMEwp1sW9j2Q6c@containers-us-west-99.railway.app:5637", { useNewUrlParser: true })
+    mongoose.connect(db, { useNewUrlParser: true })
 
     const connection = mongoose.connection
 
