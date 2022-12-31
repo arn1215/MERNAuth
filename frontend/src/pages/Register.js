@@ -45,7 +45,7 @@ function Register() {
     <div className='animate flex justify-center items-center h-screen'>
 
       <div className='w-[500px] space-y-5 flex-col p-5 shadow-lg border border-gray-300 rounded-xl'>
-        <h1 className='font-semibold text-3xl text-gray-700'>Welcome to MERN AUTH APP</h1>
+        <h1 className='font-semibold text-3xl text-gray-700'>Register for Ticketr</h1>
         <input type='text' placeholder='email' className={inputStyle} onChange={e => setEmail(e.target.value)} value={email} />
         <input type='text' placeholder='username' className={inputStyle} onChange={e => setUserName(e.target.value)} value={userName} />
         <input type='password' placeholder='password' className={inputStyle} onChange={e => setPassword(e.target.value)} value={password} />

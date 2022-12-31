@@ -14,6 +14,17 @@ function Login() {
   const [password, setPassword] = useState("")
   const navigate = useNavigate()
   const dispatch = useDispatch()
+
+  const demoUser = () => {
+
+    setEmail("er")
+    setPassword("er")
+
+    login()
+
+  }
+
+
   const login = async () => {
     const user = {
       password, email,
@@ -46,7 +57,9 @@ function Login() {
 
         <div className='flex justify-between items-end'>
           <Link className="underline" to='/register'>Click Here To Register</Link>
-          <button className='py-1 px-5 text-white bg-blue-700 rounded' onClick={login}>LOGIN</button>
+          <button className='py-1 px-5 text-white bg-blue-700 rounded hover:bg-blue-600' onClick={login}>LOGIN</button>
+
+          <button className='py-1 px-5 text-white bg-blue-700 rounded hover:bg-blue-600' onClick={demoUser}>DEMO USER</button>
         </div>
 
       </div>
